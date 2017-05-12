@@ -43,7 +43,7 @@
 			$db -> exec($query);
 		}
 
-		//đếm số hàng trong bảng products
+		//đếm số hàng trong bảng brands
 		public function countBrand (){
 			$db = new connect();
 			$query = "select count('brand_id') from brands";
@@ -58,7 +58,14 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-
+		
+		//lấy brand theo từng nhóm ký tự
+		public function getLikeBrand($brand_name){
+			$db = new connect();
+			$query = "select * from brands where brand_name like '$brand_name%'";
+			$result = $db -> getList($query);
+			return $result;
+		}
 
 	}
 ?>

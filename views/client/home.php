@@ -3,6 +3,12 @@
 	include '../views/client/banner.php';
 ?>
   <!-- BRANDS -->
+	<?php
+		$brand = new Brands();
+		$count_brand = $brand->countBrand();
+		if($count_brand[0]==0){
+		}else{
+	?>
 	<section class="section white our-brands" style="height: auto;">
 		<div class="container">
 			<div class="inside-container">
@@ -10,22 +16,18 @@
 					<h3 class="title1 fancy"><span>Meet Our</span></h3>
 					<h3 class="title3">Brands</h3>
 				</div>
-				<?php $pro = new Products();
-					$count_product = $pro->countProduct();
-					if(isset($count_product[0])){
-				?>
 				<div class="section-content">
 					<p>We specialise in your favourite natural health staples and the latest trending products from Australia and around the world.</p>
 					<div class="row on-for-mobile-up">
 						<div class="row">        
 							<div class="row on-for-mobile-up">
-								<?php $brand = new Brands();
+								<?php 
 									$brands = $brand->getBrandSlide(0,4);
 									foreach ($brands as $set){
 								?>
 										<div class="col-sm-3 col-xs-6 col-xxxs-12"><img class="aligncenter size-full wp-image-194" src="<?php echo '../controller/public/client/images/brand/'.$set['brand_image']; ?>" alt="" width="187" height="184" sizes="(max-width: 187px) 100vw, 187px"><p></p>
 											<div>
-												<p><?php echo $set['brand_name']; ?></p>
+												<p><a href="?action=product&brand=<?php echo $set['brand_id']; ?>"><?php echo $set['brand_name']; ?></a></p>
 											</div>
 										</div>
 								<?php
@@ -37,19 +39,13 @@
 					<p><img class="alignnone size-full wp-image-2195 on-for-mobile-down-only brands-mobile-img" style="margin-bottom: 1em;"></p>
 				</div>
 				<span class="callout down">See our awesome range</span>
-				<a href="" class="btn btn-ghost" title="Click here">Click here</a>
-				<?php 
-					}else{
-				?>
-				<div class="section-content">
-					<p>We specialise in your favourite natural health staples and the latest trending products from Australia and around the world.</p>
-				</div>	
-				<?php
-					}
-				?>
+				<a href="?action=brand" class="btn btn-ghost" title="Click here">Click here</a>
 			</div>
 		</div>
 	</section>
+	<?php 
+		}
+	?>
 	<!-- END BRAND -->
 	<!-- PRODUCT -->
 	<?php $pro = new Products();
@@ -59,11 +55,7 @@
 	<section class="white products">
 		<div class="container">
 			<?php
-				$pro = new Products();
-				$count_product = $pro->countProduct();
 				$count_product_dis = $pro->countProductDiscount();
-				if(isset($count_product[0])){
-
 				$title = new Titles();
 				$titles = $title->getTitles();
 				foreach ($titles as $set){
@@ -86,7 +78,7 @@
 			<!-- SP -->
 			
 			<?php
-				if($set['title_name']=='Sản phẩm bán chạy'){
+				if($set['title_id']==1){
 			?>
 			<div class="container"> 
 			 <div class="row"> 
@@ -95,69 +87,73 @@
 				<?php
 					$or = new Order();
 					$ct_or = $or->getCountOrderProduct();
-					if($ct_or[0]>= 9){
-						$dem = 3;
-					}else if($ct_or[0]>= 5){
-						$dem = 2;
+					if($ct_or[0] == 0){
 					}else{
-						$dem = 1;
-					}
-					for($i=0; $i<$dem;$i++){
-				?>
-					<div class="item<?php if($i==0){ echo ' active';} ?>"> 
-						<div class="row"> 
-				<?php
-						$ct_buy = $i*4;
-						$buy = $or->getOrderProduct($ct_buy,4);
-						foreach ($buy as $set){
-				?>
-						<div class="col-md-3"> 
-							<div class="product-warp-box">
-								<div class="feature-image">
-									<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
-									<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>">
-									</a>
-									</div>
-									<div class="feature-title">
-										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
-									</div>
-									<div class="feature-price">
-									<?php
-										if($set['product_currency']== 'vnđ' || $set['product_currency']== 'đ' || $set['product_currency']== 'vnd' || $set['product_currency']== 'đồng'){
-											if($set['product_discount']!=0){
-									?>
-												<span class="new-price left"><?php  echo number_format($set['product_discount'],2).' '.$set['product_currency']; ?></span>
-												<span class="old-price right"><?php echo number_format($set['product_price'],2).' '.$set['product_currency']; ?></span>
-										<?php
-											}else{
-										?>
-												<center><span class="new-price"><?php echo number_format($set['product_price'],2).' '.$set['product_currency']; ?></span></center>
-									<?php 	} 
-										}
-										else{
-											if($set['product_discount']!=0){
-									?>
-												<span class="new-price left"><?php  echo $set['product_currency'].' '.number_format($set['product_discount'],2); ?></span>
-												<span class="old-price right"><?php echo $set['product_currency'].' '.number_format($set['product_price'],2); ?></span>
-										<?php
-											}else{
-										?>
-												<center><span class="new-price"><?php echo $set['product_currency'].' '.number_format($set['product_price'],2); ?></span></center>
-									<?php
-											} 
-										}
-									?>
-										<div class="clear"></div>
-									</div>
-							</div>     
-						</div>	
-				<?php
+						if($ct_or[0]>= 9){
+							$dem = 3;
+						}else if($ct_or[0]>= 5){
+							$dem = 2;
+						}else{
+							$dem = 1;
 						}
+						for($i=0; $i<$dem;$i++){
 				?>
-						</div> 
-					</div>
+						<div class="item<?php if($i==0){ echo ' active';} ?>"> 
+							<div class="row"> 
+					<?php
+							$ct_buy = $i*4;
+							$buy = $or->getOrderProduct($ct_buy,4);
+							foreach ($buy as $set){
+					?>
+							<div class="col-md-3"> 
+								<div class="product-warp-box">
+									<div class="feature-image">
+										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
+										<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>">
+										</a>
+										</div>
+										<div class="feature-title">
+											<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
+										</div>
+										<div class="feature-price">
+										<?php
+											if($set['product_currency']== 'vnđ' || $set['product_currency']== 'đ' || $set['product_currency']== 'vnd' || $set['product_currency']== 'đồng'){
+												if($set['product_discount']!=0){
+										?>
+													<span class="new-price left"><?php  echo number_format($set['product_discount'],2).' '.$set['product_currency']; ?></span>
+													<span class="old-price right"><?php echo number_format($set['product_price'],2).' '.$set['product_currency']; ?></span>
+											<?php
+												}else{
+											?>
+													<center><span class="new-price"><?php echo number_format($set['product_price'],2).' '.$set['product_currency']; ?></span></center>
+										<?php 	} 
+											}
+											else{
+												if($set['product_discount']!=0){
+										?>
+													<span class="new-price left"><?php  echo $set['product_currency'].' '.number_format($set['product_discount'],2); ?></span>
+													<span class="old-price right"><?php echo $set['product_currency'].' '.number_format($set['product_price'],2); ?></span>
+											<?php
+												}else{
+											?>
+													<center><span class="new-price"><?php echo $set['product_currency'].' '.number_format($set['product_price'],2); ?></span></center>
+										<?php
+												} 
+											}
+										?>
+											<div class="clear"></div>
+										</div>
+								</div>     
+							</div>	
+				<?php
+							}
+				?>
+							</div> 
+						</div>
 				
-				<?php }
+				<?php 
+						}
+					}
 				?>  
 				</div> 
 				<a class="left carousel-control" href="#myCarousel<?php echo $slide; ?>" data-slide="prev"><i class="fa fa-chevron-left fa-2x"></i></a>
@@ -167,7 +163,7 @@
 			</div>
 			<!-- end -->	
 			<?php
-				}else if($set['title_name']=='Sản phẩm mới nhất'){
+				}else if($set['title_id']==2){
 			?>
 			<div class="container"> 
 			 <div class="row"> 
@@ -245,65 +241,69 @@
 			 </div>
 			</div>
 			<!-- end -->
-			<?php		}else if($set['title_name']=='Sản phẩm On Sale'){
+			<?php		}else if($set['title_id']==3){
 			?>
 			<div class="container"> 
 			 <div class="row"> 
 			   <div id="myCarousel<?php echo $slide; ?>" class="carousel slide" data-interval="false">
 				<div class="carousel-inner">
 				<?php
-					
-					if($count_product_dis[0]>= 9){
-						$dem = 3;
-					}else if($count_product_dis[0]>= 5){
-						$dem = 2;
+					if($count_product_dis[0] == 0){
+						
 					}else{
-						$dem = 1;
-					}
-					for($i=0; $i<$dem;$i++){
-				?>
-					<div class="item<?php if($i==0){ echo ' active';} ?>"> 
-						<div class="row"> 
-				<?php
-						$ct_pro = $i*4;
-						$sale = $pro->getProductDiscountDESC($ct_pro,4);
-						foreach ($sale as $set){
-				?>
-						<div class="col-md-3"> 
-							<div class="product-warp-box">
-								<div class="feature-image">
-									<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
-									<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>" title="<?php echo $set['product_name']; ?>">
-									</a>
-									</div>
-									<div class="feature-title">
-										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
-									</div>
-									<div class="feature-price">
-									<?php
-										if($set['product_currency']== 'vnđ' || $set['product_currency']== 'đ' || $set['product_currency']== 'vnd' || $set['product_currency']== 'đồng'){
-									?>
-										<span class="new-price left"><?php  echo number_format($set['product_discount'],2).' '.$set['product_currency']; ?></span>
-										<span class="old-price right"><?php echo number_format($set['product_price'],2).' '.$set['product_currency']; ?></span>
-									<?php }
-										else{
-									?>
-										<span class="new-price left"><?php  echo $set['product_currency'].' '.number_format($set['product_discount'],2); ?></span>
-										<span class="old-price right"><?php echo $set['product_currency'].' '.number_format($set['product_price'],2); ?></span>
-									<?php
-										}
-									?>
-										<div class="clear"></div>
-									</div>
-							</div>     
-						</div>	
-				<?php
+						if($count_product_dis[0]>= 9){
+							$dem = 3;
+						}else if($count_product_dis[0]>= 5){
+							$dem = 2;
+						}else{
+							$dem = 1;
 						}
+						for($i=0; $i<$dem;$i++){
 				?>
-						</div> 
-					</div>
+						<div class="item<?php if($i==0){ echo ' active';} ?>"> 
+							<div class="row"> 
+					<?php
+							$ct_pro = $i*4;
+							$sale = $pro->getProductDiscountDESC($ct_pro,4);
+							foreach ($sale as $set){
+					?>
+							<div class="col-md-3"> 
+								<div class="product-warp-box">
+									<div class="feature-image">
+										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
+										<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>" title="<?php echo $set['product_name']; ?>">
+										</a>
+										</div>
+										<div class="feature-title">
+											<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
+										</div>
+										<div class="feature-price">
+										<?php
+											if($set['product_currency']== 'vnđ' || $set['product_currency']== 'đ' || $set['product_currency']== 'vnd' || $set['product_currency']== 'đồng'){
+										?>
+											<span class="new-price left"><?php  echo number_format($set['product_discount'],2).' '.$set['product_currency']; ?></span>
+											<span class="old-price right"><?php echo number_format($set['product_price'],2).' '.$set['product_currency']; ?></span>
+										<?php }
+											else{
+										?>
+											<span class="new-price left"><?php  echo $set['product_currency'].' '.number_format($set['product_discount'],2); ?></span>
+											<span class="old-price right"><?php echo $set['product_currency'].' '.number_format($set['product_price'],2); ?></span>
+										<?php
+											}
+										?>
+											<div class="clear"></div>
+										</div>
+								</div>     
+							</div>	
+				<?php
+							}
+				?>
+							</div> 
+						</div>
 				
-				<?php }
+				<?php 
+						}
+					}
 				?>  
 				</div> 
 				<a class="left carousel-control" href="#myCarousel<?php echo $slide; ?>" data-slide="prev"><i class="fa fa-chevron-left fa-2x"></i></a>
@@ -322,54 +322,59 @@
 				<?php
 					$show_title = new ShowTitle();
 					$count_show_title = $show_title->countShowTitleById($slide);
-					if($count_show_title[0]>= 9){
-						$dem = 3;
-					}else if($count_show_title[0]>= 5){
-						$dem = 2;
+					if($count_show_title[0] == 0){
+						
 					}else{
-						$dem = 1;
-					}
-					for($i=0; $i<$dem;$i++){
-				?>
-					<div class="item<?php if($i==0){ echo ' active';} ?>"> 
-						<div class="row"> 
-				<?php
-						$ct_tt = $i*4;
-						$s_title = $show_title->getShowTitleNew($slide,$ct_tt,4);
-						foreach ($s_title as $set){
-				?>
-						<div class="col-md-3"> 
-							<div class="product-warp-box">
-								<div class="feature-image">
-									<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
-									<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>" title="<?php echo $set['product_name']; ?>">
-									</a>
-									</div>
-									<div class="feature-title">
-										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
-									</div>
-									<div class="feature-price">
-									<?php
-										if($set['product_discount']!=0){
-									?>
-										<span class="new-price left"><?php echo number_format($set['product_discount'],2); ?> đ</span>
-										<span class="old-price right"><?php echo number_format($set['product_price'],2); ?> đ</span>
-									<?php
-										}else{
-									?>
-										<center><span class="new-price"><?php echo number_format($set['product_price'],2); ?> đ</span></center>
-									<?php } ?>
-										<div class="clear"></div>
-									</div>
-							</div>     
-						</div>	
-				<?php
+						if($count_show_title[0]>= 9){
+							$dem = 3;
+						}else if($count_show_title[0]>= 5){
+							$dem = 2;
+						}else{
+							$dem = 1;
 						}
+						for($i=0; $i<$dem;$i++){
 				?>
-						</div> 
-					</div>
+						<div class="item<?php if($i==0){ echo ' active';} ?>"> 
+							<div class="row"> 
+					<?php
+							$ct_tt = $i*4;
+							$s_title = $show_title->getShowTitleNew($slide,$ct_tt,4);
+							foreach ($s_title as $set){
+					?>
+							<div class="col-md-3"> 
+								<div class="product-warp-box">
+									<div class="feature-image">
+										<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1">
+										<img src="<?php echo '../controller/public/client/images/product/'.$set['product_image']; ?>" alt="<?php echo $set['product_name']; ?>" title="<?php echo $set['product_name']; ?>">
+										</a>
+										</div>
+										<div class="feature-title">
+											<a href="?action=viewProduct&id=<?php echo $set['product_id']; ?>" tabindex="-1"><?php echo $set['product_name']; ?></a>
+										</div>
+										<div class="feature-price">
+										<?php
+											if($set['product_discount']!=0){
+										?>
+											<span class="new-price left"><?php echo number_format($set['product_discount'],2); ?> đ</span>
+											<span class="old-price right"><?php echo number_format($set['product_price'],2); ?> đ</span>
+										<?php
+											}else{
+										?>
+											<center><span class="new-price"><?php echo number_format($set['product_price'],2); ?> đ</span></center>
+										<?php } ?>
+											<div class="clear"></div>
+										</div>
+								</div>     
+							</div>	
+				<?php
+							}
+				?>
+							</div> 
+						</div>
 				
-				<?php }
+				<?php 
+						}
+					}
 				?>  
 				</div> 
 				<a class="left carousel-control" href="#myCarousel<?php echo $slide; ?>" data-slide="prev"><i class="fa fa-chevron-left fa-2x"></i></a>
@@ -381,17 +386,25 @@
 			<?php
 						}
 					}
-				}}else{}
+				}
+		
 			?>
 		</div>
 	</section>  
-	<?php }
+	<?php }else{}
 	?>	
 	<!-- END PRODUCT -->
 	
 	
 	
 	<!-- BLOG -->
+	<?php $blog = new Blogs();
+		$countBlog = $blog->getCountBlogSlide();
+		if($countBlog[0]==0){
+			
+		}else{
+			
+	?>
 	<section class="section white container auto blog">
 		<div class="container">
 			<div class="inside-container">
@@ -400,7 +413,7 @@
 					<h3 class="title3">Blog</h3>
 				</div>
 				<ul class="list-none list-unstyled">
-				<?php $blog = new Blogs();
+				<?php 
 					$blogs = $blog->getBlogSlide(0,3);
 					foreach ($blogs as $set){
 				?>
@@ -409,8 +422,8 @@
 							<div class="postthumb">
 								<img src="<?php echo '../controller/public/client/images/blog/'.$set['featured_image']; ?>" class="b-lazy attachment-blog-preview wp-post-image b-loaded"> 
 							</div>
-							<h4 class="title1"><a href=""><?php echo $set['blog_title']; ?></a></h4>
-							<a class="btn btn-ghost" href="">Read now</a>
+							<h4 class="title1"><a href="?action=viewBlog&id=<?php echo $set['blog_id']; ?>"><?php echo $set['blog_title']; ?></a></h4>
+							<a class="btn btn-ghost" href="?action=viewBlog&id=<?php echo $set['blog_id']; ?>">Read now</a>
 						</div>
 					</li>
 					<?php }
@@ -419,11 +432,14 @@
 				
 				<div class="section-content">
 					<p style="margin-bottom: 1em;">Find out about new products, seasonal essentials and industry insights.</p>
-					<a href="/blog" class="btn btn-ghost" title="View All">View All</a>
+					<a href="?action=blog" class="btn btn-ghost" title="View All">View All</a>
 				</div>
 			</div>
 		</div>
 	</section>
+	<?php
+		}
+	?>
 	<!-- END BLOG -->
 
 	<section class="white testimonials">
