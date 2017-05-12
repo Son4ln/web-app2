@@ -61,18 +61,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <!-- <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i> Product Group<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="?action=groupList">List Group</a>
-                                </li>
-                                <li>
-                                    <a href="?action=groupAdd">Add Group</a>
-                                </li>
-                            </ul>
 
-                        </li> -->
                         <li>
                             <a href="#"><i class="fa fa-database fa-fw"></i> Categories<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -135,14 +124,33 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-comments fa-fw"></i> Châm Ngôn<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-comments fa-fw"></i> Maxim<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="?action=listMaxim">List Châm Ngôn</a>
+                                    <a href="?action=listMaxim">List Maxim</a>
                                 </li>
                                 <li>
-                                    <a href="?action=addMaxim">Add Châm Ngôn</a>
+                                    <a href="?action=addMaxim">Add Maxim</a>
                                 </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-certificate fa-fw"></i> Certificates<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=certifList">List Certificates</a>
+                                </li>
+                                <li>
+                                    <a href="?action=certifAdd">Add Certificates</a>
+                                </li>
+                                <li>
+                                    <a href="?action=certificateAndProductList">Product list and its Certification</a>
+                                </li>
+                                <li>
+                                    <a href="?action=addCertifToProduct">Add Certification to the Product</a>
+                                </li>
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

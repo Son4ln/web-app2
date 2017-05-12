@@ -78,7 +78,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu mới nhất trong bảng products
 		public function getProductNewB ($brand_id, $from, $to) {
 			$db = new connect();
@@ -86,7 +86,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu mới nhất trong bảng products
 		public function getProductNewF ($feature_id, $from, $to) {
 			$db = new connect();
@@ -94,7 +94,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu mới nhất trong bảng products
 		public function getProductNewO ($origin_id, $from, $to) {
 			$db = new connect();
@@ -134,7 +134,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu có giảm giá trong bảng products theo brand_id
 		public function getProductDiscountB ($brand_id, $from, $to) {
 			$db = new connect();
@@ -142,7 +142,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu có giảm giá trong bảng products theo feature_id
 		public function getProductDiscountF ($feature_id, $from, $to) {
 			$db = new connect();
@@ -150,7 +150,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu có giảm giá trong bảng products theo origin_id
 		public function getProductDiscountO ($origin_id, $from, $to) {
 			$db = new connect();
@@ -218,7 +218,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng trong bảng products theo category_id với parent_id = 0
 		public function countProductCategoryArrayParent ($category_id){
 			$db = new connect();
@@ -250,7 +250,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng trong bảng products theo mảng category_id
 		public function countProductCategoryArray ($category_id){
 			$db = new connect();
@@ -346,7 +346,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảng category_id với parent_id = 0
 		public function getProductCategoryLimitArrayParent ($category_id, $from, $to){
 			$db = new connect();
@@ -378,7 +378,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products theo mảng category_id
 		public function getProductCategoryLimitArray ($category_id, $from, $to){
 			$db = new connect();
@@ -410,7 +410,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//PRODUCT SELECTED FROM THE HOMEPAGE
 		//đếm số hàng giảm giá trong bảng products theo brand_id
 		public function countProductDiscountB ($brand_id){
@@ -419,7 +419,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng giảm giá trong bảng products theo feature_id
 		public function countProductDiscountF ($feature_id){
 			$db = new connect();
@@ -427,7 +427,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng giảm giá trong bảng products theo origin_id
 		public function countProductDiscountO ($origin_id){
 			$db = new connect();
@@ -435,7 +435,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng thương hiệu trong bảng products
 		public function getProductDiscountBrand () {
 			$db = new connect();
@@ -443,7 +443,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng tính năng trong bảng products
 		public function getProductDiscountFeature () {
 			$db = new connect();
@@ -451,7 +451,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng nguồn gốc trong bảng products
 		public function getProductDiscountOrigin () {
 			$db = new connect();
@@ -459,8 +459,8 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
-		
+
+
 		// BRAND
 		//lấy dữ liệu sản phẩm theo từng thương hiệu trong bảng products
 		public function getProductBrand () {
@@ -485,7 +485,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng thương hiệu của một mảng loại với parent_id = 0
 		public function getProductCategoryBrandArrayParent ($category_id) {
 			$db = new connect();
@@ -493,7 +493,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng thương hiệu của một mảng loại
 		public function getProductCategoryBrandArray ($category_id) {
 			$db = new connect();
@@ -509,7 +509,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng thương hiệu của một loại mảng với parent_id = 0
 		public function countProductCategoryBrandByIdArrayParent ($category_id, $brand_id) {
 			$db = new connect();
@@ -517,7 +517,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng thương hiệu của một loại mảng
 		public function countProductCategoryBrandByIdArray ($category_id, $brand_id) {
 			$db = new connect();
@@ -550,7 +550,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng tính năng của một mảng loại với parent_id = 0
 		public function getProductCategoryFeatureArrayParent ($category_id) {
 			$db = new connect();
@@ -558,7 +558,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng tính năng của một mảng loại
 		public function getProductCategoryFeatureArray ($category_id) {
 			$db = new connect();
@@ -574,7 +574,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng tính năng của một mảng loại với parent_id = 0
 		public function countProductCategoryFeatureByIdArrayParent ($category_id, $feature_id) {
 			$db = new connect();
@@ -582,7 +582,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng tính năng của một mảng loại
 		public function countProductCategoryFeatureByIdArray ($category_id, $feature_id) {
 			$db = new connect();
@@ -615,7 +615,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng tính năng của một mảng loại với parent_id = 0
 		public function getProductCategoryOriginArrayParent ($category_id) {
 			$db = new connect();
@@ -623,7 +623,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng tính năng của một mảng loại
 		public function getProductCategoryOriginArray ($category_id) {
 			$db = new connect();
@@ -639,7 +639,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng tính năng của một mảng loại với parent_id = 0
 		public function countProductCategoryOriginByIdArrayParent ($category_id, $origin_id) {
 			$db = new connect();
@@ -647,7 +647,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng tính năng của một mảng loại
 		public function countProductCategoryOriginByIdArray ($category_id, $origin_id) {
 			$db = new connect();

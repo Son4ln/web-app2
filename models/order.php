@@ -1,6 +1,6 @@
 <?php
 	class Order{
-		
+
 		function __construct()
 		{
 
@@ -12,7 +12,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng sản phẩm bán chạy theo brand_id
 		public function getCountOrderProductB ($brand_id){
 			$db = new connect();
@@ -20,7 +20,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng sản phẩm bán chạy theo origin_id
 		public function getCountOrderProductF ($feature_id){
 			$db = new connect();
@@ -28,7 +28,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng sản phẩm bán chạy theo origin_id
 		public function getCountOrderProductO ($origin_id){
 			$db = new connect();
@@ -36,7 +36,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm bán chạy
 		public function getOrderProduct($from, $to) {
 			$db = new connect();
@@ -53,7 +53,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng tính năng trong bảng products
 		public function countOrderFeatureById ($feature_id) {
 			$db = new connect();
@@ -61,7 +61,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng nguồn gốc trong bảng products
 		public function countOrderOriginById ($origin_id) {
 			$db = new connect();
@@ -69,7 +69,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng thương hiệu trong bảng products
 		public function getOrderBrand () {
 			$db = new connect();
@@ -77,7 +77,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng tính năng trong bảng products
 		public function getOrderFeature () {
 			$db = new connect();
@@ -85,7 +85,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng nguồn gốc trong bảng products
 		public function getOrderOrigin () {
 			$db = new connect();
@@ -93,7 +93,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//SHOW PRODUCT SELECTED FROM ORDER_DETAILS
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products và order_details
 		public function getProductOrderLimit ($from, $to){
@@ -102,7 +102,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products và order_details theo brand_id
 		public function getProductOrderLimitB ($brand_id, $from, $to){
 			$db = new connect();
@@ -110,7 +110,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products và order_details theo feature_id
 		public function getProductOrderLimitF ($feature_id, $from, $to){
 			$db = new connect();
@@ -118,7 +118,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products và order_details theo origin_id
 		public function getProductOrderLimitO ($origin_id, $from, $to){
 			$db = new connect();

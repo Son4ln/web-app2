@@ -44,6 +44,10 @@ if(isset($_GET["action"])){
      $blog_dir='public/client/images/blog';
      $blog_dir_path=getcwd().DIRECTORY_SEPARATOR.$blog_dir;
 
+     //khỏi tạo link ảnh certificates
+     $certif_dir='public/client/images/certificates';
+     $certif_dir_path=getcwd().DIRECTORY_SEPARATOR.$certif_dir;
+
  //include điều hướng vào đây
     include "../controller/clientController.php";
     include "../controller/adminController.php";
