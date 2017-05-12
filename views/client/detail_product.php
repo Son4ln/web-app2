@@ -30,9 +30,9 @@
 
             	<div class="col-sm-9">
                     <div class="product-images-large product-border">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:50%; height: 50%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:50%; height: 50%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:50%; height: 50%">
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:100%; height: 100%">
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:100%; height: 100%">
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:100%; height: 100%">
                     </div>
             	</div>
 
@@ -64,7 +64,32 @@
                   dots[slideIndex-1].className += " images-opacity-off";
                 }
                 </script>
-
+				
+				<?php
+					$objCtfc = new Certificates();
+					$countCtfc = $objCtfc->countProductCertificateById($client_id);
+					if($countCtfc[0]==0){
+						
+					}else{
+						
+				?>
+				<div id="article-right">   
+                    <h3 class="bottom-border" style="padding-top:50px; margin-bottom: 15px;">Certificate</h3>
+					<?php
+					$showCtfc = $objCtfc->getProductCertificate($client_id);
+					foreach($showCtfc as $ctfc){
+					?>
+					<div class="col-sm-4">
+						<img src="<?php echo '../controller/public/client/images/certificate/'.$ctfc['certificate_image']; ?>" alt="<?php echo $ctfc['certificate_name']; ?>" title="<?php echo $ctfc['certificate_name']; ?>"/>
+						<p><?php echo $ctfc['certificate_name']; ?></p>
+					</div>
+					<?php
+					}
+					?>
+				</div>
+				<?php
+					}
+				?>
             </div>  
             <div class="col-sm-7">
                 <div id="product-text">

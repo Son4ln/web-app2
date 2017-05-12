@@ -35,6 +35,7 @@
 			$query = "delete from certificates where certificate_id ='$id'";
 			$db -> exec($query);
 		}
+<<<<<<< Updated upstream
 
 		//phương thức lấy tất cả dữ liệu
 		public function getCertificatesAndProducts (){
@@ -67,6 +68,23 @@
 			$db = new connect();
 			$query = "delete from product_certificate where show_id ='$id'";
 			$db -> exec($query);
+=======
+		
+		//đếm số hàng dữ liệu theo 1 id sản phẩm có trong bảng product_certificate
+		public function countProductCertificateById($id) {
+			$db = new connect();
+			$query = "select count(product_id) from product_certificate where product_id = '$id'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//lấy dữ liệu trong bảng product_certificate và certificates theo 1 sản phẩm
+		public function getProductCertificate($id) {
+			$db = new connect();
+			$query = "select * from certificates JOIN  product_certificate ON certificates.certificate_id = product_certificate.certificate_id where product_id = '$id'";
+			$result = $db -> getList($query);
+			return $result;
+>>>>>>> Stashed changes
 		}
 	}
 ?>

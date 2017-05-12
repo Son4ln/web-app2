@@ -4,7 +4,7 @@
 
 	<?php
 		$objCate = new Categories();
-		$objShowTitle = new sliderShow();
+		$objShowTitle = new ShowTitle();
 		if($action == 'product'){
 			
 		}
@@ -788,7 +788,7 @@
 										}
 										foreach ($showPro as $list){
 											?>
-											<div class="prod" style="margin-bottom: 20px;margin-top: 20px;">
+											<div class="prod" style="margin-bottom: 40px;margin-top: 40px;">
 												<div class="prod-img">
 													<a href="?action=viewProduct&id=<?php echo $list['product_id']; ?>">
 														<img src="<?php echo '../controller/public/client/images/product/'.$list['product_image']; ?>" alt="<?php echo $list['product_name']; ?>" title="<?php echo $list['product_name']; ?>"></a>

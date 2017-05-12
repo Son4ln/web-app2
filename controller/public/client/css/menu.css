@@ -24,6 +24,7 @@
 	width: 50%;
 	padding: 0 2em;
   margin-top: 30px;
+	min-height: 300px;
 	min-width: 320px;
 	position: absolute;
   z-index: 1;
@@ -94,8 +95,8 @@
   background: #ea1a77;
   top: 10px;
   left: 16%;
-  box-shadow:
-    0 10px 0 #ea1a77,
+  box-shadow: 
+    0 10px 0 #ea1a77, 
     0 20px 0 #ea1a77;
 }
 
