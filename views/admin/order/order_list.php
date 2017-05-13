@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">User
+                        <h1 class="page-header">Orders
                             <small>List</small>
                         </h1>
                     </div>
@@ -17,39 +17,39 @@
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
-                                <th>Họ tên</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>SĐT</th>
-                                <th>Địa chỉ</th>
-                                <th>Quyền</th>
+                                <th>Order Id</th>
+                                <th>Họ Tên</th>
+                                <th>Ngày đặt hàng</th>
+                                <th>Ngày thanh toán</th>
+                                <th>Tổng giá</th>
+                                <th>Tình trạng</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
                              <?php
+                                $order = new Order();
                                 $user = new Users();
-                                $data = $user -> getUsers();
+                                $data = $order -> getOrder();
                                  foreach ($data as $key) {
                             ?>
                             <tr class="odd gradeX" align="center">
-                                <td><?php echo $key['full_name']; ?></td>
-                                <td><?php echo $key['username']; ?></td>
-                                <td><?php echo $key['email']; ?></td>
-                                <td><?php echo $key['phone']; ?></td>
-                                <td><?php echo $key['address']; ?></td>
-                                <td><?php if($key['permission'] == 0){
-                                        echo "Super Admin";
-                                    }elseif ($key['permission'] == 1) {
-                                        echo "Admin";
-                                    }else
-                                    {
-                                        echo "User";
-                                    }
-                                    ?>
-                                </td>
-                                <td><i class="fa fa-trash-o  fa-fw" ></i><a onclick="return delConfirm ('Bạn có chắc muốn xóa User này');" href="?action=delUser&id=<?php echo $key['user_id']; ?>"> Delete</a> |
-                                <i class="fa fa-pencil fa-fw"></i> <a href="?action=userEdit&id=<?php echo $key['user_id']; ?>">Permission</a></td>
+                                <td><?php echo $key['order_id']; ?></td>
+                                <td><?php
+                                  $userData = $user -> getUserById($key['user_id']);
+                                  echo $userData['full_name'];
+                                 ?></td>
+                                <td><?php echo $key['order_date']; ?></td>
+                                <td><?php echo $key['delivery_date']; ?></td>
+                                <td><?php echo $key['order_cost']; ?></td>
+                                <td><?php
+                                  if($key['order_status'] == 1)
+                                    echo "Đã thanh toán";
+                                  else
+                                    echo "<b style='color:red;'>Chưa thanh toán</b>";
+                                 ?></td>
+                                <td><i class="fa fa-trash-o  fa-fw" ></i><a onclick="return delConfirm ('Bạn có chắc muốn xóa hóa đơn này');" href="?action=orderDel&id=<?php echo $key['order_id']; ?>"> Delete</a> |
+                                <i class="fa fa-table fa-fw"></i> <a href="?action=orderDetail&id=<?php echo $key['order_id']; ?>">Chi tiết</a></td>
                             </tr>
                             <?php } ?>
                         </tbody>

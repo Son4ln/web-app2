@@ -20,10 +20,10 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="?action=change_data"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="?action=logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -75,6 +75,18 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-adjust fa-fw"></i> Features<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=">List Features</a>
+                                </li>
+                                <li>
+                                    <a href="?action=">Add Feature</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -82,6 +94,18 @@
                                 </li>
                                 <li>
                                     <a href="?action=productAdd">Add Product</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-paypal fa-fw"></i> Order<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=orderList">List Order</a>
+                                </li>
+                                <li>
+                                    <a href="?action=orderAdd">Add Order</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -152,6 +176,9 @@
                                 </li>
 
                             </ul>
+                            <li>
+                                    <a href="?action="><i class="fa fa-phone fa-fw"></i> Contact</a>
+                                </li>
                             <!-- /.nav-second-level -->
                         </li>
                     </ul>

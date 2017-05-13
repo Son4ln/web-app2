@@ -16,6 +16,9 @@ include "../models/showTitle.php";
 include "../models/titles.php";
 include "../models/users.php";
 include "../models/libs.php";
+include "../models/upload/image_util.php";
+require_once '../models/send_mail/messages.php';
+require_once '../models/send_mail/curl.php';
 
 //khởi tạo action
 if(isset($_GET["action"])){

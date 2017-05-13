@@ -5,6 +5,65 @@
 		{
 
 		}
+
+		public function getOrder (){
+			$db = new connect();
+			$query = "select * from orders";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		function getLatestOrder(){
+			$db = new connect();
+			$query = "select * from orders ORDER by order_id DESC limit 0,1";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		function addDetail($orderId, $productId, $quantity, $price, $discount, $total){
+			$db = new connect();
+			$query = "insert into order_details values('','$orderId','$productId', '$quantity', '$price', '$discount', '$total')";
+			$db -> exec($query);
+		}
+
+		function delDetail($id){
+			$db = new connect();
+			$query = "delete from order_details where order_id ='$id'";
+			$db -> exec($query);
+		}
+
+		public function addOrder ($user, $orderDate, $deliveryDate, $orderCost, $status){
+			$db = new connect();
+			$query = "insert into orders values('','$user','$orderDate', '$deliveryDate', '$orderCost', '$status')";
+			$db -> exec($query);
+		}
+
+		public function updateOrder ($id, $cost){
+			$db = new connect();
+			$query = "update orders set order_cost = '$cost' where order_id = '$id'";
+			$db -> exec($query);
+		}
+
+		public function getOrderById ($id){
+			$db = new connect();
+			$query = "select * from orders WHERE order_id = '$id'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+
+		public function getOrderDetailByOrderId ($id){
+			$db = new connect();
+			$query = "select * FROM order_details WHERE order_id = '$id'"
+			;
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		public function delOrder($id){
+			$db = new connect();
+			$query = "delete from orders where order_id ='$id'";
+			$db -> exec($query);
+		}
 		//đếm số hàng sản phẩm bán chạy
 		public function getCountOrderProduct() {
 			$db = new connect();

@@ -1,12 +1,33 @@
+<?php
+    if(empty($_SESSION['messages']))
+        {
+            $messages="";
+            
+        }
+        else
+        {
+            $messages=$_SESSION['messages'];
+        }
+    if ((isset($_COOKIE["user04516"]) && (isset($_COOKIE["pass04516"]))))
+      {
+          $user=$_COOKIE["user04516"];
+          $pass=$_COOKIE["pass04516"];
+      }
+      else
+      {
+          $user="";
+          $pass="";
+      }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> 	<?php $info = new contactInfo();
-					$name = $info->getContactInfo();
-					foreach ($name as $set){
-					echo $set['company_name'];}
+					$contact = $info->getContactInfo();
+					echo $contact['company_name'];
 				?>
 	</title>
 	<link rel="stylesheet" href="../controller/public/client/css/bootstrap.min.css"/>
@@ -21,6 +42,42 @@
 </head>
 <body>
 <!-- HEADER -->
+<div id="top-header">
+    <?php
+        if(isset($_SESSION['check']) && $action!="logout"){
+			$username = $_SESSION['check'];
+            $customer = new Users();
+            $quest = $customer->getUsername($username);
+    ?>
+        <div id='menu' style="height: 40px; margin-right: 8%;">
+			<ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown" style="margin-top:-5px; height: 40px;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<span>Hello ! <?php echo $username; ?>  </span>
+                        <img src="../controller/public/client/images/user-avatar/<?php echo $quest['avatar']; ?>" width="30px" height="30px" style="border-radius:50%;" /> <i class="fa fa-caret-down" style="color:#ea1a77"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="?action=change_data"><i class="fa fa-gear fa-fw"></i> Change Info</a>
+                        </li>
+						<li><a href="?action=change_password"><i class="fa fa-gear fa-fw"></i> Change Password</a>
+                        </li>
+						<li><a href="?action=change_avatar"><i class="fa fa-gear fa-fw"></i> Change avatar</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="?action=logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </div>
+    <?php }else{
+            echo '<p style="text-align:right; margin-right: 8%;margin-top: 6px;height: 35px; margin-bottom:0;"><span><a href="?action=login">LogIn</a></span>  |   <span><a href="?action=register">Register</a></span></p>';
+        }
+    ?>
+</div>
 <header id="masthead" class="site-header" role="banner">    
 <nav role="navigation" class="navbar navbar-default navbar-fluid" id="primaryNav">
     <div class="container">
@@ -113,26 +170,21 @@
 
             <div class="col-md-2 col-xs-6 col-xxxs-12">
                 <a href="" rel="home" class="navbar-brand right">
-				<?php $info = new contactInfo();
-					$logo = $info->getContactInfo();
-					foreach ($logo as $set){
-				?>
-                    <img class="logo-img" src="<?php echo '../controller/public/client/images/'.$set['logo_image']; ?>" title="">
-					<?php }?>
-                </a>
+                    <img class="logo-img" src="<?php echo '../controller/public/client/images/'.$contact['logo_image']; ?>" title="">
+				</a>
             </div>
             <div class="col-md-3">
                 <ul class="nav flex-right border contact right">  
                 <li class="fancy-li"><span>Contact Us</span></li>
 				<?php
-					$objContact = new Contact();
-					$showContact = $objContact->getShowContactInfo();
+					$objContact = new contactInfo();
+					$showContact = $objContact->getContactInfo();
 				?>
                 <li>
                     <span class="text">Vietname Phone:</span><a href=""><?php echo $showContact['vietnam_phone']; ?></a>
                 </li>
                 <li>
-                    <span class="text">Australia Phone:</span><a href=""><?php echo $showContact['australia_phone']; ?></a>
+                    <span class="text">Australia Phone:</span><a href=""><?php echo $contact['australia_phone']; ?></a>
                 </li>
             </ul>
             </div>
