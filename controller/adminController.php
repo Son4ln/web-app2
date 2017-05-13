@@ -12,4 +12,5 @@ include "../controller/controller/admin-controller/productController.php";
 include "../controller/controller/admin-controller/blogController.php";
 include "../controller/controller/admin-controller/maximController.php";
 include "../controller/controller/admin-controller/certificatesController.php";
+include "../controller/controller/admin-controller/orderController.php";
 ?>
