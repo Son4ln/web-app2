@@ -16,16 +16,15 @@
 								<li><a href="?action=product">Products</a></li>
                                 <li><a href="?action=blog">Blogs</a></li>
                                 <li><a href="?action=brand">Brands</a></li>
-                                <li><a href="#">Login</a></li>
+                                <li><a href="?action=login">Login</a></li>
                                 <li><a href="?action=contact">Contact Us</a></li>
                     </ul></div></div>
                     <div class="row" style="text-align: center;">
                         <ul class="nav navbar-nav menu-center privacy-menu">
                             <li>
                                 <a class="small" href="mainController.php"><?php $info = new contactInfo();
-									$name = $info->getContactInfo();
-									foreach ($name as $set){
-									echo $set['company_name'];}
+									$contact = $info->getContactInfo();
+									echo $contact['company_name'];
 								?></a>
                             </li>
                             <li>

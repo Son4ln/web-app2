@@ -76,7 +76,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu trong bảng product_certificate và certificates theo 1 sản phẩm
 		public function getProductCertificate($id) {
 			$db = new connect();

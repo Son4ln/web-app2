@@ -1,5 +1,14 @@
 <?php 
-	include '../views/client/header.php'; 
+	include '../views/client/header.php';
+if(empty($_SESSION['messages']))
+        {
+            $messages="";
+            
+        }
+        else
+        {
+            $messages=$_SESSION['messages'];
+        }
 ?>
 <!-- Contact -->
 <section class="section white" style="text-align: left;">
@@ -13,40 +22,43 @@
                 <div class="col-md-8 ">
                     <div role="form" class="" id="" lang="en-US">
 						<div class="screen-reader-response"></div>
-                        <form action="" method="post" class="contact-form" novalidate="novalidate">
+						<?php
+							echo '<center><p>'.$messages.'</p></center>';
+						?>
+                        <form action="?action=send_mail" method="post" class="contact-form" novalidate="novalidate">
 							<div class="row">
 								<div class="col-md-12">
-									<span class="contact-form-control-wrap name"><input type="text" name="name" value="" size="40" class="contact-form-control contact-text contact-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Full Name"></span>
+									<input type="text" name="fname" value="" size="80%" class="form-control" placeholder="Full Name" required = "required"></span>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
-									<span class="contact-form-control-wrap address"><input type="text" name="txt-address" value="" size="40" class="contact-form-control contact-address contact-address contact-validates-as-required contact-validates-as-address form-control" aria-required="true" aria-invalid="false" placeholder="Address"></span>
+									<input type="text" name="address" value="" size="80%" class="form-control" placeholder="Address" required></span>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
-									<span class="contact-form-control-wrap email"><input type="email" name="email" value="" size="40" class="contact-form-control contact-text contact-email contact-validates-as-required contact-validates-as-email form-control" aria-required="true" aria-invalid="false" placeholder="Email" required=""></span>
+									<input type="email" name="from" value="" size="80%" class="form-control" placeholder="Email"  required></span>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
-									<span class="contact-form-control-wrap subject"><input type="text" name="txt-subject" value="" size="40" class="contact-form-control contact-subject contact-subject contact-validates-as-required contact-validates-as-subject form-control" aria-required="true" aria-invalid="false" placeholder="Subject"></span>
+									<input type="text" name="subject" value="" size="80%" class="form-control" placeholder="Subject" required></span>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
-									<span class="contact-form-control-wrap message"><textarea name="message" cols="40" rows="7" class="contact-form-control contact-textarea form-control" aria-invalid="false" placeholder="Message"></textarea></span>
+									<textarea name="message" cols="80%" rows="7" class="form-control" placeholder="Message" required></textarea></span>
 								</div>
 							</div>
-							<p><input type="submit" value="Send" class="contact-form-control contact-submit btn btn-ghost"><span class="ajax-loader"></span></p>
+							<p><input type="submit" value="Send"  class="btn btn-primary" ></p>
                         </form>
 					</div>
                 </div>
                 <div class="col-md-4 ">
 					<?php
-						$objContact = new Contact();
-						$showContact = $objContact->getShowContactInfo();
+						$objContact = new contactInfo();
+						$showContact = $objContact->getContactInfo();
 					?>
                     <p><strong><span class="alt">Vietnam Phone: </span><?php echo $showContact['vietnam_phone']; ?></strong></p>
 					<p><strong><span class="alt">Australia Phone: </span><?php echo $showContact['australia_phone']; ?></strong></p>

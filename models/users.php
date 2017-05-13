@@ -52,5 +52,80 @@
 			$query = "delete from users where user_id ='$id'";
 			$db -> exec($query);
 		}
+		
+		//kiểm tra đăng nhập.
+		public function is_valid_admin_login ($username, $password) {
+			$db = new connect();
+            $query = "SELECT user_id FROM users WHERE username='$username' and password='$password'";
+            $result = $db->getInstance($query); 
+            if($result!=null) 
+                return true; 
+            else 
+                return false; 
+		}
+		
+		// Kiểm tra đăng nhập khi người dùng quên password
+        public function checkPassword($username,$email) 
+        { 
+            $db = new connect();               
+            $select="select password from users where username='$username' and email='$email'"; 
+            $result = $db->getInstance($select); 
+            return $result; 
+        }
+
+        public function checkInfo($username,$email)
+         {
+            $db = new connect(); 
+            $select="select * from users where username='$username' and email='$email'";
+            $result = $db->getInstance($select);
+            if($result!=null)
+				return true;
+            else
+				return false;
+        } 
+		
+		//Khai báo phương thức đổi mật khẩu
+        function updatePassword($username,$password)
+        { 
+            $db = new connect();
+            $query = "update users set password='$password' where username='$username'";
+            $db->exec($query);
+        }
+		
+		//kiểm tra tên đăng nhập đã tồn tại
+        public function checkUser($username) 
+        { 
+            $db = new connect();               
+            $select="select * from users where username='$username'"; 
+            $result = $db->getInstance($select); 
+            if($result!=null) 
+                return true; 
+            else 
+                return false; 
+        }
+		
+		//phương thức lấy 1 dòng dữ liệu bằng username
+		public function getUsername($username) {
+			$db = new connect();
+			$query = "select * from users where username = '$username'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//Khai báo phương thức đổi thông tin user
+        function updateData($user_fullname, $username, $user_email, $user_phone, $user_address)
+        { 
+            $db = new connect();
+            $query = "update users set full_name =n'$user_fullname', email='$user_email', phone='$user_phone', address='$user_address' where username='$username'";
+            $db->exec($query);
+        }
+		
+        //Khai báo phương thức đổi ảnh đại diện
+        function updateAvatar($username,$user_image)
+        { 
+            $db = new connect();
+            $query = "update users set avatar='$user_image' where username='$username'";
+            $db->exec($query);
+        }
 	}
 ?>

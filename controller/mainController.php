@@ -5,7 +5,6 @@ include "../models/brands.php";
 include "../models/blogs.php";
 include "../models/categories.php";
 include "../models/certificates.php";
-include "../models/contact.php";
 include "../models/features.php";
 include "../models/information.php";
 include "../models/maxim.php";
@@ -16,6 +15,9 @@ include "../models/showTitle.php";
 include "../models/titles.php";
 include "../models/users.php";
 include "../models/libs.php";
+include "../models/upload/image_util.php";
+require_once '../models/send_mail/messages.php';
+require_once '../models/send_mail/curl.php';
 
 //khởi tạo action
 if(isset($_GET["action"])){
