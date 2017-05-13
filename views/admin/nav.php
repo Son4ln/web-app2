@@ -75,6 +75,18 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-adjust fa-fw"></i> Features<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=">List Features</a>
+                                </li>
+                                <li>
+                                    <a href="?action=">Add Feature</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -82,6 +94,18 @@
                                 </li>
                                 <li>
                                     <a href="?action=productAdd">Add Product</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-paypal fa-fw"></i> Order<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=orderList">List Order</a>
+                                </li>
+                                <li>
+                                    <a href="?action=orderAdd">Add Order</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -152,6 +176,9 @@
                                 </li>
 
                             </ul>
+                            <li>
+                                    <a href="?action="><i class="fa fa-phone fa-fw"></i> Contact</a>
+                                </li>
                             <!-- /.nav-second-level -->
                         </li>
                     </ul>
