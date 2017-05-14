@@ -1,9 +1,9 @@
-<?php 
+<?php
 	include '../views/client/header.php';
 if(empty($_SESSION['messages']))
         {
             $messages="";
-            
+
         }
         else
         {
@@ -57,6 +57,7 @@ if(empty($_SESSION['messages']))
 							</div>
 							<br />
 							<p><input type="submit" value="Send"  class="btn btn-primary btn-login" ></p>
+                        </form>
 					</div>
                 </div>
                 <div class="col-md-4 ">

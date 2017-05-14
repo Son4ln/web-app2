@@ -673,7 +673,7 @@ h2 {
 }
 @media (max-width: 991px)  {
     #prod-list .prod{
-        
+
     }
     }
 @media (max-width: 767px) {
@@ -820,7 +820,7 @@ h2 {
 }
 #product-text .brand-thumb {
     float: right;
-     width: 17%; 
+     width: 17%;
     padding: 0 0 0 0;
     margin: 8px 0 0 20px;
 }
@@ -1107,7 +1107,7 @@ input[type="text"], input[type="email"], input[type="url"], input[type="password
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 b, strong {
-     font-weight: bold; 
+     font-weight: bold;
 }
 .alt {
     color: #ea1a77;
@@ -1120,7 +1120,7 @@ b, strong {
     padding: 10px 0 0 1%;
 }
 #article-left p.intro {
-    font-size: 1.35em; 
+    font-size: 1.35em;
 }
 #article-left p, #article-left li {
     font-size: 1.05em;
@@ -1257,3 +1257,7 @@ b, strong {
     overflow: hidden;
     font-size: 1.0em;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ea5a5d9d4a15eceafbb612e756920fc40342f132
