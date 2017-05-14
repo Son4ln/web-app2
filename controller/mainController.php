@@ -6,7 +6,6 @@ include "../models/blogs.php";
 include "../models/categories.php";
 include "../models/cart.php";
 include "../models/certificates.php";
-include "../models/contact.php";
 include "../models/features.php";
 include "../models/information.php";
 include "../models/maxim.php";
