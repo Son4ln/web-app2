@@ -217,5 +217,5 @@
     </div>
 </nav>
     </header>
-	<div style="width: 100%; height: 145px; "></div>
+	<div style="width: 100%; height: 150px; "></div>
 <!-- END HEADER -->
