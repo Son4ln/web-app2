@@ -68,7 +68,6 @@
 			$query = "delete from product_certificate where show_id ='$id'";
 			$db -> exec($query);
 		}
-		
 		//đếm số hàng dữ liệu theo 1 id sản phẩm có trong bảng product_certificate
 		public function countProductCertificateById($id) {
 			$db = new connect();
@@ -76,7 +75,6 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
 		//lấy dữ liệu trong bảng product_certificate và certificates theo 1 sản phẩm
 		public function getProductCertificate($id) {
 			$db = new connect();

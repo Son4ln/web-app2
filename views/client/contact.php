@@ -1,9 +1,9 @@
-<?php 
+<?php
 	include '../views/client/header.php';
 if(empty($_SESSION['messages']))
         {
             $messages="";
-            
+
         }
         else
         {
