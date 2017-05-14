@@ -35,6 +35,7 @@
 			$query = "delete from certificates where certificate_id ='$id'";
 			$db -> exec($query);
 		}
+<<<<<<< Updated upstream
 
 		//phương thức lấy tất cả dữ liệu
 		public function getCertificatesAndProducts (){
@@ -68,6 +69,8 @@
 			$query = "delete from product_certificate where show_id ='$id'";
 			$db -> exec($query);
 		}
+=======
+>>>>>>> Stashed changes
 		
 		//đếm số hàng dữ liệu theo 1 id sản phẩm có trong bảng product_certificate
 		public function countProductCertificateById($id) {
@@ -76,7 +79,11 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
+<<<<<<< Updated upstream
 
+=======
+		
+>>>>>>> Stashed changes
 		//lấy dữ liệu trong bảng product_certificate và certificates theo 1 sản phẩm
 		public function getProductCertificate($id) {
 			$db = new connect();

@@ -30,9 +30,15 @@
 
             	<div class="col-sm-9 col-xs-12">
                     <div class="product-images-large product-border">
+<<<<<<< Updated upstream
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:auto; height: 100%">
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:auto; height: 100%">
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:auto; height: 100%">
+=======
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:100%; height: 100%">
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:100%; height: 100%">
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:100%; height: 100%">
+>>>>>>> Stashed changes
                     </div>
             	</div>
 
@@ -76,6 +82,7 @@
 					}else{
 						
 				?>
+<<<<<<< Updated upstream
 				<div class="col-md-12 chungnhan" style="margin-top: 5%">
                     <div class="title"><h3>Certificate</h3></div>
                     <div class="row">
@@ -93,6 +100,22 @@
 						?>
                     </div>
                 </div>
+=======
+				<div id="article-right">   
+                    <h3 class="bottom-border" style="padding-top:50px; margin-bottom: 15px;">Certificate</h3>
+					<?php
+					$showCtfc = $objCtfc->getProductCertificate($client_id);
+					foreach($showCtfc as $ctfc){
+					?>
+					<div class="col-sm-4">
+						<img src="<?php echo '../controller/public/client/images/certificate/'.$ctfc['certificate_image']; ?>" alt="<?php echo $ctfc['certificate_name']; ?>" title="<?php echo $ctfc['certificate_name']; ?>"/>
+						<p><?php echo $ctfc['certificate_name']; ?></p>
+					</div>
+					<?php
+					}
+					?>
+				</div>
+>>>>>>> Stashed changes
 				<?php
 					}
 				?>
