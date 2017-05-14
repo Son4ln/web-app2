@@ -43,6 +43,13 @@
 			$db -> exec($query);
 		}
 
+		public function delBlogByUser ($id) {
+			$db = new connect();
+			$query = "delete from blogs where user_id = '$id'";
+			$db -> exec($query);
+		}
+
+
 		//lấy giới hạn số hàng dữ liệu từ bảng blogs
 		public function getBlogSlide ($from, $to) {
 			$db = new connect();
@@ -50,7 +57,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//đếm số tin trong bảng blogs
 		public function getCountBlogSlide() {
 			$db = new connect();

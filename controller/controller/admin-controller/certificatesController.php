@@ -99,6 +99,7 @@
 	  case 'certifDel':
 	  	$id = $_GET['id'];
 	  	$certif = new Certificates();
+	  	$certif -> delCertificateByCertificateId ($id);
 	  	$certif -> delCertificate($id);
 	  	$delImg = $certif -> getCertificateById($id);
 	  	if( file_exists($certif_dir_path.DIRECTORY_SEPARATOR.$delImg['certificate_image'])){

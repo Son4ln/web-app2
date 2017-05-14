@@ -95,9 +95,9 @@
     $id = $_GET['id'];
     $slider = new sliderShow();
     $slider -> delSlideShow($id);
-    $delImg = $slider ->getSlideShowById($id);
-    if(file_exists($banner_dir_path.DIRECTORY_SEPARATOR.$slider['slide_image'])){
-          unlink($banner_dir_path.DIRECTORY_SEPARATOR.$slider['slide_image']);
+    $delImg = $slider -> getSlideShowById($id);
+    if(file_exists($banner_dir_path.DIRECTORY_SEPARATOR.$delImg['slide_image'])){
+          unlink($banner_dir_path.DIRECTORY_SEPARATOR.$delImg['slide_image']);
         }
     $mes = "Xóa Banner thành công";
     $action = 'bannerList';

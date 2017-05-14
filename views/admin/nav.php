@@ -14,13 +14,24 @@
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
+                <?php
+        if(isset($_SESSION['check']) && $action!="logout"){
+            $username = $_SESSION['check'];
+            $customer = new Users();
+            $quest = $customer->getUsername($username);
+        }
+    ?>
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <!-- <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i> -->
+                        <span>Hello ! <?php echo $username; ?>  </span>
+                        <img src="../controller/public/client/images/user-avatar/<?php echo $quest['avatar']; ?>" width="30px" height="30px" style="border-radius:50%;" /> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="?action=change_data"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-                        <li><a href="?action=change_data"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="?action=change_password"><i class="fa fa-gear fa-fw"></i> Change Password</a>
+                        </li>
+                        <li><a href="?action=change_avatar"><i class="fa fa-gear fa-fw"></i> Change avatar</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="?action=logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -78,10 +89,10 @@
                             <a href="#"><i class="fa fa-adjust fa-fw"></i> Features<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="?action=">List Features</a>
+                                    <a href="?action=listFeature">List Features</a>
                                 </li>
                                 <li>
-                                    <a href="?action=">Add Feature</a>
+                                    <a href="?action=addFeature">Add Feature</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -110,6 +121,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <?php if($_SESSION['permission04516'] == 0){ ?>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -122,6 +134,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <?php } ?>
                         <li>
                             <a href="#"><i class="fa fa-file-image-o fa-fw"></i> Banner<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -176,9 +189,31 @@
                                 </li>
 
                             </ul>
-                            <li>
-                                    <a href="?action="><i class="fa fa-phone fa-fw"></i> Contact</a>
+
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-tag fa-fw"></i> Tilte<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=listTitle">List Title</a>
                                 </li>
+                                <li>
+                                    <a href="?action=addTitle">Add Title</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-phone fa-fw"></i> Contact<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="?action=showContact">Default Contact</a>
+                                </li>
+                                <li>
+                                    <a href="?action=listContactFromUser">Contact from user</a>
+                                </li>
+                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
                     </ul>

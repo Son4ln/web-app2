@@ -43,13 +43,16 @@
                                 <td><?php echo $key['delivery_date']; ?></td>
                                 <td><?php echo $key['order_cost']; ?></td>
                                 <td><?php
-                                  if($key['order_status'] == 1)
-                                    echo "Đã thanh toán";
-                                  else
-                                    echo "<b style='color:red;'>Chưa thanh toán</b>";
-                                 ?></td>
-                                <td><i class="fa fa-trash-o  fa-fw" ></i><a onclick="return delConfirm ('Bạn có chắc muốn xóa hóa đơn này');" href="?action=orderDel&id=<?php echo $key['order_id']; ?>"> Delete</a> |
-                                <i class="fa fa-table fa-fw"></i> <a href="?action=orderDetail&id=<?php echo $key['order_id']; ?>">Chi tiết</a></td>
+                                  if($key['order_status'] == 1){?>
+                                    <a onclick="return delConfirm ('Bạn có chắc muốn chỉnh sửa trạng thái');" href="?action=updateStatus&id=<?php echo $key['order_id']; ?>&status=0"><b'>Đã nhận hàng</b></a>
+                                  <?php }else{ ?>
+                                    <a onclick="return delConfirm ('Bạn có chắc muốn chỉnh sửa trạng thái');" href="?action=updateStatus&id=<?php echo $key['order_id']; ?>&status=1"><b style="color: red">Chưa nhận hàng</b></a>
+                                  <?php } ?></td>
+                                <td>
+                                <i class="fa fa-truck  fa-fw" ></i><a onclick="return delConfirm ('Giao hàng ?');" href="?action=shipping&id=<?php echo $key['order_id']; ?>"> Ship</a>
+                                 |
+                                <i class="fa fa-table fa-fw"></i> <a href="?action=orderDetail&id=<?php echo $key['order_id']; ?>">Detail</a> |
+                                <i class="fa fa-trash-o  fa-fw" ></i><a onclick="return delConfirm ('Bạn có chắc muốn xóa hóa đơn này');" href="?action=orderDel&id=<?php echo $key['order_id']; ?>"> Delete</a></td>
                             </tr>
                             <?php } ?>
                         </tbody>

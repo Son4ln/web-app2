@@ -12,10 +12,22 @@
     // Brand delete
   case 'brandDel':
     $mes = "Xóa Brand thành công";
-    $brand = new Brands();
     $id = $_GET['id'];
+    $brand = new Brands();
+    $order= new Order();
+    $product = new Products();
+    $certif = new Certificates();
+    $title = new ShowTitle();
+    $resultProduct = $product -> getProductByBrandId ($id);
+    foreach ($resultProduct as $valueProduct) {
+      $order -> delDetailByProduct($valueProduct['product_id']);
+      $certif -> delCertificateByProduct($valueProduct['product_id']);
+      $title -> delShowTitleByProduct($valueProduct['product_id']);
+    }
+    $product -> delProductByBrandId ($id);
     $brand -> delBrand($id);
     $delImg = $brand -> getBrandById($id);
+
     if(file_exists($brand_dir.DIRECTORY_SEPARATOR.$delImg['brand_image'])){
       unlink($brand_dir.DIRECTORY_SEPARATOR.$delImg['brand_image']);
     }

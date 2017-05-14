@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blogs
+                        <h1 class="page-header">Contact from user
                             <small>List</small>
                         </h1>
                     </div>
@@ -14,17 +14,19 @@
                     </div>
 
                     <?php
-                        $blog = new Blogs();
-                        $data = $blog -> getBlogs ();
+                        $contact = new contactInfo();
+                        $data = $contact -> getContactFromUser ();
+                        if(empty($data)){}
                     ?>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Tiêu Đề</th>
-                                <th>Ảnh Đại Diện</th>
-                                <th>Upload By</th>
+                                <th>Tên người gửi</th>
+                                <th>Địa chỉ</th>
+                                <th>Email</th>
+                                <th>Ngày gửi</th>
                                 <th>Thao Tác</th>
 
                             </tr>
@@ -33,15 +35,12 @@
                             <?php foreach ($data as $key) {
                              ?>
                             <tr class="odd gradeX" align="center">
-                                <td><?php echo $key['blog_id']; ?></td>
-                                <td><?php echo $key['blog_title']; ?></td>
-                                <td><img src="public/client/images/blog/<?php echo $key['featured_image']; ?>" width="100px"></td>
-                                <td><?php
-                                    $user = new Users();
-                                    $dataUser = $user -> getUserById($key['user_id']);
-                                     echo $dataUser['full_name'];
-                                 ?></td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa Brand này. Toàn bộ sản phẩm liên quan cũng sẽ bị xóa')" href="?action=blogDel&id=<?php echo $key['blog_id']; ?>"> Delete</a> <br/><hr style="margin: 5px" /> <i class="fa fa-pencil fa-fw"></i> <a href="?action=blogEdit&id=<?php echo $key['blog_id']; ?>">Edit and Detail</a></td>
+                                <td><?php echo $key['contact_id']; ?></td>
+                                <td><?php echo $key['full_name']; ?></td>
+                                <td><?php echo $key['contact_address']; ?></td>
+                                <td><?php echo $key['sender_email']; ?></td>
+                                <td><?php echo $key['sent_date']; ?></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa liên hệ này')" href="?action=delContactFromUser&id=<?php echo $key['contact_id']; ?>"> Delete</a></td>
                             </tr>
                             <?php } ?>
                             </tbody>

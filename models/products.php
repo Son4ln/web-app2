@@ -30,6 +30,13 @@
 			return $result;
 		}
 
+		public function getProductByUser ($id) {
+			$db = new connect();
+			$query = "select * from products where user_id = '$id'";
+			$result = $db ->getInstance($query);
+			return $result;
+		}
+
 		//thêm dữ liệu vào brands
 		public function addProducts ($name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $inStock, $categoriesId, $featureId, $brandId, $originId, $userId){
 			$db = new connect();
@@ -68,6 +75,58 @@
 			$db = new connect();
 			$query = "delete from products where product_id = '$id'";
 			$db -> exec($query);
+		}
+
+		public function delProductByBrandId ($id) {
+			$db = new connect();
+			$query = "delete from products where brand_id = '$id'";
+			$db -> exec($query);
+		}
+
+		public function getProductByBrandId ($id) {
+			$db = new connect();
+			$query = "select * from products where brand_id = '$id'";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		public function delProductByCate ($id) {
+			$db = new connect();
+			$query = "delete from products where category_id = '$id'";
+			$db -> exec($query);
+		}
+
+		public function getProductByCate ($id) {
+			$db = new connect();
+			$query = "select * from products where category_id = '$id'";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		public function delProductByFeature ($id) {
+			$db = new connect();
+			$query = "delete from products where feature_id = '$id'";
+			$db -> exec($query);
+		}
+
+		public function getProductByFeature ($id) {
+			$db = new connect();
+			$query = "select * from products where feature_id = '$id'";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+		public function delProductByUser ($id) {
+			$db = new connect();
+			$query = "delete from products where user_id = '$id'";
+			$db -> exec($query);
+		}
+
+		public function getProductByUserId ($id) {
+			$db = new connect();
+			$query = "select * from products where user_id = '$id'";
+			$result = $db -> getList($query);
+			return $result;
 		}
 
 // HOMEPAGE

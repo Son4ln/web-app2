@@ -17,13 +17,14 @@
             }
             echo "<center><h3>Congratulations, you have successfully updated</h3>
                     <p><a href='?action=home'>Back to Homepage</a></p><br /></center>";
-            
+
         }
-            
+
         ?>
                 </div>
             </div>
         </div>
 </section>
-<?php 
+<?php
     include '../views/client/footer.php';?>
+
