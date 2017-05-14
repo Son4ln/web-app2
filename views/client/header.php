@@ -2,7 +2,7 @@
     if(empty($_SESSION['messages']))
         {
             $messages="";
-            
+
         }
         else
         {
@@ -79,7 +79,7 @@
         }
     ?>
 </div>
-<header id="masthead" class="site-header" role="banner">    
+<header id="masthead" class="site-header" role="banner">
 <nav role="navigation" class="navbar navbar-default navbar-fluid" id="primaryNav">
     <div class="container">
         <div class="row on-for-mobile-up">
@@ -105,11 +105,11 @@
 								?>
 										<li>
 											<a href="?action=category&id=<?php echo $set['category_id']; ?>"><?php echo $set['category_name']; ?></a>
-									<?php	
+									<?php
 											$checkMenu = $menu->checkMenuParentChild($set['category_id']);
 											if($checkMenu){
 												$showMenuChild = $menu->showMenuChild($set['category_id']);
-											
+
 									?>
 												<ul class="dl-submenu">
 													<li><a href="?action=category&id=<?php echo $set['category_id']; ?>">Tất cả sản phẩm</a></li>
@@ -118,12 +118,12 @@
 									?>
 													<li>
 														<a href="?action=category&id=<?php echo $result['category_id']; ?>"><?php echo $result['category_name']; ?></a>
-											
-											<?php	
+
+											<?php
 													$checkMenu1 = $menu->checkMenuParentChild($result['category_id']);
 													if($checkMenu1){
 														$showMenuChild1 = $menu->showMenuChild($result['category_id']);
-													
+
 											?>
 														<ul class="dl-submenu">
 											<?php
@@ -131,19 +131,19 @@
 											?>
 															<li>
 																<a href="?action=category&id=<?php echo $result1['category_id']; ?>"><?php echo $result1['category_name']; ?></a>
-										
+
 											<?php			echo '</li>';
 														}
 														echo '</ul>';
 													}
 											?>
-											
+
 									<?php			echo '</li>';
 												}
 												echo '</ul>';
 											}
 									?>
-										
+
 								<?php	echo '</li>';
 										}
 									} echo '</ul>';
@@ -175,38 +175,31 @@
 				</a>
             </div>
             <div class="col-md-3">
-                <ul class="nav flex-right border contact right">  
+                <ul class="nav flex-right border contact right">
                 <li class="fancy-li"><span>Contact Us</span></li>
 				<?php
 					$objContact = new Contact();
 					$showContact = $objContact->getShowContactInfo();
 				?>
                 <li>
-<<<<<<< Updated upstream
-                    <span class="text">Vietname Phone:</span><a href=""><?php echo $contact['vietnam_phone']; ?></a>
-                </li>
-                <li>
-                    <span class="text">Australia Phone:</span><a href=""><?php echo $contact['australia_phone']; ?></a>
-=======
                     <span class="text">Vietname Phone:</span><a href=""><?php echo $showContact['vietnam_phone']; ?></a>
                 </li>
                 <li>
                     <span class="text">Australia Phone:</span><a href=""><?php echo $showContact['australia_phone']; ?></a>
->>>>>>> Stashed changes
                 </li>
             </ul>
             </div>
             <div class="col-md-3">
                 <ul class="nav navbar-nav flex-right right search" style="margin-top: 25px">
-                <li>                    
+                <li>
                     <form role="search" method="post" class="search-form" action="?action=search">
                      <label>
                         <span class="screen-reader-text">Search for:</span>
-                         <input type="search" class="search-field" placeholder="Search …" value="" name="search" title="Search for:">  
+                         <input type="search" class="search-field" placeholder="Search …" value="" name="search" title="Search for:">
                     </label>
                     <button type="submit" class="search-submit"><span class="fa fa-search"></span></button>
-                    </form>                                         
-                </li>                
+                    </form>
+                </li>
             </ul>
             </div>
             <div class="col-md-3">
@@ -219,7 +212,7 @@
                 </li>
             </ul>
             </div>
-        </div>      
+        </div>
         </div>
     </div>
 </nav>

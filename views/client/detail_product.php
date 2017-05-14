@@ -1,5 +1,5 @@
-<?php 
-	include '../views/client/header.php'; 
+<?php
+	include '../views/client/header.php';
 ?>
 <!-- DETAIL PRODUCT -->
 <section class="section white" style="text-align: left;">
@@ -30,15 +30,9 @@
 
             	<div class="col-sm-9 col-xs-12">
                     <div class="product-images-large product-border">
-<<<<<<< Updated upstream
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:auto; height: 100%">
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:auto; height: 100%">
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:auto; height: 100%">
-=======
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:100%; height: 100%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:100%; height: 100%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:100%; height: 100%">
->>>>>>> Stashed changes
                     </div>
             	</div>
 
@@ -73,16 +67,15 @@
                   dots[slideIndex-1].className += " images-opacity-off";
                 }
                 </script>
-				
+
 				<?php
 					$objCtfc = new Certificates();
 					$countCtfc = $objCtfc->countProductCertificateById($client_id);
 					if($countCtfc[0]==0){
-						
+
 					}else{
-						
+
 				?>
-<<<<<<< Updated upstream
 				<div class="col-md-12 chungnhan" style="margin-top: 5%">
                     <div class="title"><h3>Certificate</h3></div>
                     <div class="row">
@@ -100,8 +93,7 @@
 						?>
                     </div>
                 </div>
-=======
-				<div id="article-right">   
+				<div id="article-right">
                     <h3 class="bottom-border" style="padding-top:50px; margin-bottom: 15px;">Certificate</h3>
 					<?php
 					$showCtfc = $objCtfc->getProductCertificate($client_id);
@@ -115,11 +107,10 @@
 					}
 					?>
 				</div>
->>>>>>> Stashed changes
 				<?php
 					}
 				?>
-            </div>  
+            </div>
             <div class="col-sm-7 col-xs-12">
                 <div id="product-text">
 					<span class="currency" style="display:none">AUD</span>
@@ -132,7 +123,7 @@
 							<?php
 								} else{
 							?>
-								<span class="rrp-price"><?php  echo '<span>'.$detailPro['product_currency'].number_format($detailPro['product_price'],2).'</span><span> '.'<span>'; 
+								<span class="rrp-price"><?php  echo '<span>'.$detailPro['product_currency'].number_format($detailPro['product_price'],2).'</span><span> '.'<span>';
 								}
 							?>
                         </div>
@@ -142,11 +133,11 @@
 								if($detailPro['product_currency']== 'vnđ' || $detailPro['product_currency']== 'đ' || $detailPro['product_currency']== 'vnd' || $detailPro['product_currency']== 'đồng'){
 									echo '<span>'.number_format($detailPro['product_price'],2).'</span><span> '.$detailPro['product_currency'].'<span>';
 								} else{
-									echo '<span>'.$detailPro['product_currency'].number_format($detailPro['product_price'],2).'</span><span> '.'<span>'; 
+									echo '<span>'.$detailPro['product_currency'].number_format($detailPro['product_price'],2).'</span><span> '.'<span>';
 								}
 							}else {
 								if($detailPro['product_currency']== 'vnđ' || $detailPro['product_currency']== 'đ' || $detailPro['product_currency']== 'vnd' || $detailPro['product_currency']== 'đồng'){
-									echo '<span>'.number_format($detailPro['product_discount'],2).'</span><span> '.$detailPro['product_currency'].'<span>'; 
+									echo '<span>'.number_format($detailPro['product_discount'],2).'</span><span> '.$detailPro['product_currency'].'<span>';
 								} else{
 									echo '<span>'.$detailPro['product_currency'].number_format($detailPro['product_discount'],2).'</span><span> '.'<span>';
 								}
@@ -164,8 +155,8 @@
 	                        </fieldset>
 						</form>
                     </div><h2 class="bold">Product Description</h2>
-                    <div class="description"> 
-						<p><?php echo nl2br($detailPro['product_detail'])?></p> 
+                    <div class="description">
+						<p><?php echo nl2br($detailPro['product_detail'])?></p>
 					</div>
 				</div>
 			</div>
