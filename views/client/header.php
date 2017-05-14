@@ -178,8 +178,8 @@
                 <ul class="nav flex-right border contact right">
                 <li class="fancy-li"><span>Contact Us</span></li>
 				<?php
-					$objContact = new Contact();
-					$showContact = $objContact->getShowContactInfo();
+					$objContact = new contactInfo();
+					$showContact = $objContact->getContactInfo();
 				?>
                 <li>
                     <span class="text">Vietname Phone:</span><a href=""><?php echo $showContact['vietnam_phone']; ?></a>
@@ -217,5 +217,5 @@
     </div>
 </nav>
     </header>
-	<div style="width: 100%; height: 145px; "></div>
+	<div style="width: 100%; height: 150px; "></div>
 <!-- END HEADER -->

@@ -28,31 +28,31 @@ if(empty($_SESSION['messages']))
                         <form action="?action=send_mail" method="post" class="contact-form" novalidate="novalidate">
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="fname" value="" size="80%" class="form-control" placeholder="Full Name" required = "required"></span>
+									<input type="text" name="fname" value="" size="80%" class="form-control" placeholder="Full Name" required = "required">
 								</div>
 							</div>
 							<br />
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="address" value="" size="80%" class="form-control" placeholder="Address" required></span>
+									<input type="text" name="address" value="" size="80%" class="form-control" placeholder="Address" required>
 								</div>
 							</div>
 							<br />
 							<div class="row">
 								<div class="col-md-12">
-									<input type="email" name="from" value="" size="80%" class="form-control" placeholder="Email"  required></span>
+									<input type="email" name="from" value="" size="80%" class="form-control" placeholder="Email"  required>
 								</div>
 							</div>
 							<br />
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="subject" value="" size="80%" class="form-control" placeholder="Subject" required></span>
+									<input type="text" name="subject" value="" size="80%" class="form-control" placeholder="Subject" required>
 								</div>
 							</div>
 							<br />
 							<div class="row">
 								<div class="col-md-12">
-									<textarea name="message" cols="80%" rows="7" class="form-control" placeholder="Message" required></textarea></span>
+									<textarea name="message" cols="80%" rows="7" class="form-control" placeholder="Message" required></textarea>
 								</div>
 							</div>
 							<br />
