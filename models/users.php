@@ -112,6 +112,14 @@
 			return $result;
 		}
 		
+		//phương thức lấy 1 dòng dữ liệu bằng permission
+		public function getPermission($permis) {
+			$db = new connect();
+			$query = "select * from users where permission = '$permis'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
 		//Khai báo phương thức đổi thông tin user
         function updateData($user_fullname, $username, $user_email, $user_phone, $user_address)
         { 

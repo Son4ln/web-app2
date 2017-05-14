@@ -60,7 +60,7 @@ if(isset($_SESSION['check']))
 						</div>
 						<br />
 						<div style="text-align: center">
-							<input type="submit"  class="btn btn-primary" value="Sign In"  />
+							<input type="submit"  class="btn btn-primary btn-login" value="Sign In"  />
 							<input class="btn btn-default" type="reset" value="Reset" />
 						</div>
 					</form>

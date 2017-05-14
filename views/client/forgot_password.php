@@ -45,7 +45,7 @@
 						</div>
                     </div><br />
                     <div>
-                        <input type="submit"  class="btn btn-primary" value="Send"  />
+                        <input type="submit"  class="btn btn-primary btn-login" value="Send"  />
                         <input class="btn btn-default" type="reset" value="Reset" />
                     </div>
                 </form>
@@ -55,4 +55,4 @@
     </div>
 </section>
 <?php
-    include 'footer.php';?>
+    include '../views/client/footer.php';?>

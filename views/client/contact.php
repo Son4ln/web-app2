@@ -51,7 +51,7 @@ if(empty($_SESSION['messages']))
 									<textarea name="message" cols="80%" rows="7" class="form-control" placeholder="Message" required></textarea></span>
 								</div>
 							</div>
-							<p><input type="submit" value="Send"  class="btn btn-primary" ></p>
+							<p><input type="submit" value="Send"  class="btn btn-primary btn-login" ></p>
                         </form>
 					</div>
                 </div>

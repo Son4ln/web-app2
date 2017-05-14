@@ -3,6 +3,11 @@
     session_start();
     $_SESSION['messages'] ="";
 	
+	// Tạo mảng thông tin về giỏ hàng
+    if(!isset($_SESSION['cartview04516'])){
+        $_SESSION['cartview04516'] = array();
+	}
+	
 	// upload image
     $image_dir = '../controller/public/client/images/user-avatar/';
     $image_dir_path = getcwd() . DIRECTORY_SEPARATOR . $image_dir;
@@ -13,6 +18,18 @@
         case "home":
             include '../views/client/home.php';
             break;
+		
+		//Tim kiếm
+        case "search":
+			if (empty($_POST['search'])) {
+				$_SESSION['messages'] = "Please enter the data you want to search.";
+				include '../views/client/search.php';
+					break;
+			} else {
+				$search = addslashes($_POST['search']);
+				include '../views/client/search.php';
+				break;
+			}
 			
 		//Trang giới thiệu
         case "about":
@@ -203,19 +220,19 @@
 		//Thực hiện đăng nhập
         case "login_action":
             $username = $_POST['username'];
-            $_SESSION['username04516'] = $username;
             $password = $_POST['password'];
-            $_SESSION['password04516'] = $password;
             $password_md5 = md5($username. $password);
             $customer = new Users();
             if ($customer->is_valid_admin_login($username, $password_md5)) {
+				$_SESSION['username04516'] = $username;
+				$_SESSION['password04516'] = $password;
                 $time=time()+ 600;
                 setcookie("user04516","$username",$time);
                 setcookie("pass04516","$password_md5",$time);
                // Tạo mặc định biến Session cho người dùng sau khi đăng nhập thành công
                 $_SESSION['check'] = $username;
 				$permis = $customer->getUsername($username);
-                 if($permis['permission']!=0)
+                 if($permis['permission']!=2)
                     {
                         header("Location:./mainController.php?action=admin");
                         break;
@@ -307,7 +324,7 @@
                     include "../views/client/register.php";
                     break;
                 }else{
-                    $user->addUser($user_fullname, $username, $password_md5, $user_email, $user_phone, $user_address, $user_image);
+                    $customer->addUser($user_fullname, $username, $password_md5, $user_email, $user_phone, $user_address, $user_image, 2);
                     if( $customer->checkUser($username,$password_md5)){
                         $_SESSION['messages'] = "Congratulations on registering successfully! Please login again.";
                         include "../views/client/login.php";
@@ -328,9 +345,19 @@
         // Thiết lập trang giỏ hàng
             //lấy dữ liệu đưa vào trang giỏ hàng
         case "add_cart":
-            echo add_item($_POST['productkey'],$_POST['itemqty']);
-            include "../views/client/cart.php";
-            break;
+			if(isset($_SESSION['check'])){
+				if(!isset($_POST['productkey']) ||  !isset($_POST['itemqty'])){
+					include '../views/client/cart.php';
+					break;
+				}else{
+					echo add_item($_POST['productkey'],$_POST['itemqty']);
+					include "../views/client/cart.php";
+					break;
+				}
+			}else{
+				include "../views/client/cart.php";
+				break;
+			}
         
         //Hiển thị trang giỏ hàng
         case "show_cart":
@@ -339,47 +366,92 @@
 			
         //Cập nhật khi chỉnh sửa số lượng
         case "update_cart":
-            $new_list = $_POST['newqty'];
-             
-            foreach($new_list as $key => $qty){
-                if($_SESSION['cartview04516'][$key] != $qty){
-                     update_item($key,$qty);
-                }
-            }
-             
-            include '../views/client/cart.php';
-            break;
+			if(isset($_SESSION['check'])){
+                if(!isset($_SESSION['cartview04516']) || count($_SESSION['cartview04516'])==0 || !isset($_POST['newqty'])){
+					include '../views/client/cart.php';
+					break;
+				}else{
+					$new_list = $_POST['newqty'];
+					foreach($new_list as $key => $qty){
+						if($_SESSION['cartview04516'][$key] != $qty){
+							 update_item($key,$qty);
+						}
+					}
+					 
+					include '../views/client/cart.php';
+					break;
+				}
+			}else{
+				include '../views/client/cart.php';
+				break;
+			}
+            
 			
         //Xóa giỏ hàng
         case "empty_cart":
-            unset($_SESSION['cartview04516']);
-            include '../views/client/cart.php';
-            break;
+			if(isset($_SESSION['check'])){
+                if(!isset($_SESSION['cartview04516']) || count($_SESSION['cartview04516'])==0){
+					include '../views/client/cart.php';
+					break;
+				}else{
+					unset($_SESSION['cartview04516']);
+					include '../views/client/cart.php';
+					break;
+				}
+			}else{
+				include '../views/client/cart.php';
+				break;
+			}
 			
         //Mua Hàng
         case "payments":
-            
-           $username = $_SESSION['check'];
-           $d = $_POST['day'];
-           $m = $_POST['month'];
-           $y = $_POST['year'];
-           $order_delivery_date = $y."-".$m."-".$d;
-           $quest = new user();
-           $result = $quest->getInfoById($username); 
-           $userid=$result[0];
-          
-            $o = new order();
-            $order_id = $o->createOrder($userid);
-            $_SESSION['order_id']=$order_id;
-            $total = 0;
-            foreach($_SESSION['cartview04516'] as $key => $item)
-                 {
-                $o->orderDetails($order_id,$key, $item['qty'] , $item['cost'], $item['total']);
-                 $total += $item['total'];
-                 }
-                 $o->orderTotal($order_id, $total,$order_delivery_date );
-           include "../views/client/checkout.php";
-            break;
+			if(isset($_SESSION['check'])){
+                if(!isset($_SESSION['cartview04516']) || count($_SESSION['cartview04516'])==0){
+					include "../views/client/checkout.php";
+					break;
+				}else{
+					$username = $_SESSION['check'];
+					$quest = new Users();
+					$result = $quest->getUsername($username); 
+					$permis = $quest->getPermission(0);
+					$userid=$result['user_id'];
+				  
+					$objOrder = new Order();
+					$objOrder->createOrder($userid);
+					$order_id = $objOrder->getOrderId();
+					$_SESSION['order_id']=$order_id[0];
+					$total = 0;
+						$fname = $result['full_name'];
+						$address = $result['address'];
+						$phone = $result['phone'];
+						$from = $result['email'];
+						$to = $permis['email'];
+						
+						$date = new DateTime("now");
+						$order_date = $date->format("Y-m-d");
+						$subject = 'Orders Date: '.$order_date.', Customer: '.$result['full_name'];
+						$is_body_html = true;
+						
+					try {
+						foreach($_SESSION['cartview04516'] as $key => $item){
+							$objOrder->addDetail($order_id[0],$key, $item['qty'] , $item['price'], $item['discount'], $item['total']);
+							$total += $item['total'];
+						}
+						$objOrder->updateOrder($order_id[0], $total );
+						send_email2($fname,$address, $phone, $to, $from, $subject, $order_id[0], $is_body_html);
+						include "../views/client/checkout.php";
+						break;
+					} catch (Exception $e) {
+						$error = $e->getMessage();
+						$_SESSION['messages'] = "An error occurred during the ordering process! Error: ".$error;
+						include '../views/client/cart.php';
+						break;
+					}
+				}
+			}else{
+				include "../views/client/checkout.php";
+				break;
+			}
 			
 		// Gửi mail
         case 'send_mail':

@@ -8,7 +8,7 @@
         {
             $messages=$_SESSION['messages'];
         }
-    if ((isset($_COOKIE["user04516"]) && (isset($_COOKIE["pass04516"]))))
+    if (isset($_COOKIE["user04516"]) && isset($_COOKIE["pass04516"]))
       {
           $user=$_COOKIE["user04516"];
           $pass=$_COOKIE["pass04516"];
@@ -37,6 +37,7 @@
 	<link rel="stylesheet" type="text/css" href="../controller/public/client/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../controller/public/client/css/font-awesome.css">
 	<script src="../controller/public/client/js/modernizr.custom.js"></script>
+	<script src='https://cdn.rawgit.com/jackmoore/zoom/master/jquery.zoom.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 </head>
@@ -187,10 +188,10 @@
             <div class="col-md-3">
                 <ul class="nav navbar-nav flex-right right search" style="margin-top: 25px">
                 <li>                    
-                    <form role="search" method="get" class="search-form" action="">
+                    <form role="search" method="post" class="search-form" action="?action=search">
                      <label>
                         <span class="screen-reader-text">Search for:</span>
-                         <input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:">  
+                         <input type="search" class="search-field" placeholder="Search …" value="" name="search" title="Search for:">  
                     </label>
                     <button type="submit" class="search-submit"><span class="fa fa-search"></span></button>
                     </form>                                         
@@ -200,7 +201,7 @@
             <div class="col-md-3">
                  <ul class="nav navbar-nav flex-right order right" style="margin-top: 15px">
                     <div class="ribbon">
-                        <a href="">Order Online <i class="fa fa-shopping-cart"></i></a>
+                        <a href="?action=show_cart">Order Online <i class="fa fa-shopping-cart"></i></a>
                     </div>
                 <li style="width: 100%">
                     <p class="title1"><span>Free Delivery</span> on orders over $500</p>
@@ -212,4 +213,5 @@
     </div>
 </nav>
     </header>
+	<div style="width: 100%; height: 145px; "></div>
 <!-- END HEADER -->

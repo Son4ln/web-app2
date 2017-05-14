@@ -93,8 +93,8 @@ if(empty($_SESSION['messages']))
 								</div>
                             <br />
                             <div style="text-align: center">
-                                <input type="submit"  class="btn btn-primary" value="Đăng Ký" onclick="return validate()" />
-                                <input class="btn btn-default" type="reset" value="Nhập lại" />
+                                <input type="submit"  class="btn btn-primary btn-login" value="Register" onclick="return validate()" />
+                                <input class="btn btn-default" type="reset" value="Reset" />
                             </div>
                         </form>
 						</div></div>
@@ -104,7 +104,7 @@ if(empty($_SESSION['messages']))
         </div>
 </section>
 <?php
-    include 'footer.php';?>
+    include '../views/client/footer.php';?>
 <script type="text/javascript">
 	function clearAlert(){
 		document.getElementById('alert-name').innerHTML = "";

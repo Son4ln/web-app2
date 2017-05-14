@@ -13,30 +13,33 @@
 			$detailPro = $objPro->getProductById ($client_id);
 		?>
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-5 col-xs-12">
             	<div class="col-sm-3">
             		<div class="product-images-small">
-                        <div class="box-images-small product-border" style="margin: 0;">
-                            <img class="images-small images-opacity images-hover-opacity-off" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:50%" onclick="currentDiv(1)">
+                        <div class="box-images-small" style="margin: 0;">
+                            <img class="images-small images-opacity images-hover-opacity-off zoom" id='zoom1' src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:50%" onclick="currentDiv(1)">
                         </div>
-                        <div class="box-images-small product-border">
-                          <img class="images-smallmo images-opacity images-hover-opacity-off" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:50%" onclick="currentDiv(2)">
+                        <div class="box-images-small">
+                          <img class="images-smallmo images-opacity images-hover-opacity-off zoom" id='zoom1' src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:50%" onclick="currentDiv(2)">
                         </div>
-                        <div class="box-images-small product-border">
-                          <img class="images-small images-opacity images-hover-opacity-off" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:50%" onclick="currentDiv(3)">
+                        <div class="box-images-small">
+                          <img class="images-smallmo images-opacity images-hover-opacity-off zoom" id='zoom1' src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:50%" onclick="currentDiv(3)">
                         </div>
                     </div>
             	</div>
 
-            	<div class="col-sm-9">
+            	<div class="col-sm-9 col-xs-12">
                     <div class="product-images-large product-border">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:100%; height: 100%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:100%; height: 100%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:100%; height: 100%">
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:auto; height: 100%">
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:auto; height: 100%">
+                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:auto; height: 100%">
                     </div>
             	</div>
 
                 <script>
+				$(document).ready(function(){
+				  $('#zoom1').zoom();
+				});
                 var slideIndex = 1;
                 showDivs(slideIndex);
 
@@ -73,25 +76,28 @@
 					}else{
 						
 				?>
-				<div id="article-right">   
-                    <h3 class="bottom-border" style="padding-top:50px; margin-bottom: 15px;">Certificate</h3>
-					<?php
-					$showCtfc = $objCtfc->getProductCertificate($client_id);
-					foreach($showCtfc as $ctfc){
-					?>
-					<div class="col-sm-4">
-						<img src="<?php echo '../controller/public/client/images/certificate/'.$ctfc['certificate_image']; ?>" alt="<?php echo $ctfc['certificate_name']; ?>" title="<?php echo $ctfc['certificate_name']; ?>"/>
-						<p><?php echo $ctfc['certificate_name']; ?></p>
-					</div>
-					<?php
-					}
-					?>
-				</div>
+				<div class="col-md-12 chungnhan" style="margin-top: 5%">
+                    <div class="title"><h3>Certificate</h3></div>
+                    <div class="row">
+						<?php
+						$showCtfc = $objCtfc->getProductCertificate($client_id);
+						foreach($showCtfc as $ctfc){
+						?>
+						<div  class="col-md-4">
+							<img src="<?php echo '../controller/public/client/images/certificate/'.$ctfc['certificate_image']; ?>" alt="<?php echo $ctfc['certificate_name']; ?>" title="<?php echo $ctfc['certificate_name']; ?>"/>
+							<p><?php echo $ctfc['certificate_name']; ?></p>
+							<br />
+						</div>
+						<?php
+						}
+						?>
+                    </div>
+                </div>
 				<?php
 					}
 				?>
             </div>  
-            <div class="col-sm-7">
+            <div class="col-sm-7 col-xs-12">
                 <div id="product-text">
 					<span class="currency" style="display:none">AUD</span>
                     <div class="price-div">
@@ -126,21 +132,15 @@
                         </div>
                     </div>
                    	<div id="add-to-cart-wrap">
-						<form action="" method="post" name="cartform">
+						<form action="?action=add_cart" method="post" name="add_cart">
+							<input type="hidden" name="productkey" value="<?php echo $client_id;?>"/>
                             <fieldset id="add-to-cart">
                                 <label for="quantity">Enter Qty</label>
-                                	<input class="add-qty" id="quantity" name="add[75746]" type="text" value="1" maxlength="3">
-                                <a href="#" class="add-btn" >Add to Cart</a>
+                                	<input class="add-qty" id="quantity" name="itemqty" type="text" value="1" maxlength="3">
+									<input type="submit" class="add-btn" value="Add to Cart" >
 	                        </fieldset>
 						</form>
-						
-                    </div>
-					<p class="product-links">
-						<a class="wishlist" rel="nofollow">Add to <span class="bold">My Wish List</span></a> <span class="divider">|</span>
-                        <a rel="nofollow" class="wishlist">Send to a Friend</a>
-					</p>
-                    <div id="facebook"><iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.aussiehealthproducts.com.au%2Fcolliodal-minerals.php%3Fid%3D75746%26Suttons-Colloidal-Silver-1ltr&amp;layout=standard&amp;show_faces=true&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=50" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:50px;" class="facebook"></iframe></div>
-					<h2 class="bold">Product Description</h2>
+                    </div><h2 class="bold">Product Description</h2>
                     <div class="description"> 
 						<p><?php echo nl2br($detailPro['product_detail'])?></p> 
 					</div>

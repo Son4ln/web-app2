@@ -816,7 +816,11 @@
 														}
 														?>
 													<div class="add-box">
-														<a rel="nofollow" href="#" class="add-btn">Add to Cart</a>
+														<form action="?action=add_cart" method="post" name="add_cart">
+															<input type="hidden" name="productkey" value="<?php echo $list['product_id'];?>"/>
+																<input class="add-qty" id="quantity" name="itemqty" type="hidden" value="1">
+																<input type="submit" class="add-btn" value="Add to Cart" >
+														</form>
 														<?php
 															if($list['product_discount']==0){
 														?>
