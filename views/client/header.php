@@ -178,21 +178,14 @@
                 <ul class="nav flex-right border contact right">  
                 <li class="fancy-li"><span>Contact Us</span></li>
 				<?php
-					$objContact = new Contact();
-					$showContact = $objContact->getShowContactInfo();
+					$objContact = new contactInfo();
+						$showContact = $objContact->getContactInfo();
 				?>
                 <li>
-<<<<<<< Updated upstream
-                    <span class="text">Vietname Phone:</span><a href=""><?php echo $contact['vietnam_phone']; ?></a>
-                </li>
-                <li>
-                    <span class="text">Australia Phone:</span><a href=""><?php echo $contact['australia_phone']; ?></a>
-=======
                     <span class="text">Vietname Phone:</span><a href=""><?php echo $showContact['vietnam_phone']; ?></a>
                 </li>
                 <li>
                     <span class="text">Australia Phone:</span><a href=""><?php echo $showContact['australia_phone']; ?></a>
->>>>>>> Stashed changes
                 </li>
             </ul>
             </div>

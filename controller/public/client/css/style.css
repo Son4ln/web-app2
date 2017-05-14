@@ -830,7 +830,6 @@ h2 {
 }
 .product-images-small{
     width: 100%; height: 450px;
-<<<<<<< Updated upstream
 }
 .product-images-large {
     max-width: 100%; min-height: 455px;
@@ -925,7 +924,6 @@ h2 {
     height: 20px;
     overflow: hidden;
     font-size: 1.0em;
-=======
 }
 .product-images-large {
     width: 100%; height: 455px;
@@ -946,7 +944,6 @@ h2 {
 .product-border{
     border: solid 1px #ea1a77;
     width: auto;
->>>>>>> Stashed changes
 }
 /*đăng kí*/
 .login-content {
@@ -1005,7 +1002,6 @@ h2 {
     line-height: 15px;
     padding-top: 13px;
 }
-<<<<<<< Updated upstream
 a.btn_face {
     background: url(../images/ico-fb.png) no-repeat left #2c4889;
 }
@@ -1044,7 +1040,6 @@ a.btn_google {
 }
 
 .zoom img::selection { background-color: transparent; }
-=======
 .box-tn .border-box-right .txt-tn{
     font-size: 16px;
     padding: 8%;
@@ -1262,4 +1257,3 @@ b, strong {
     overflow: hidden;
     font-size: 1.0em;
 }
->>>>>>> Stashed changes

@@ -30,15 +30,9 @@
 
             	<div class="col-sm-9 col-xs-12">
                     <div class="product-images-large product-border">
-<<<<<<< Updated upstream
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:auto; height: 100%">
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:auto; height: 100%">
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:auto; height: 100%">
-=======
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:100%; height: 100%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:100%; height: 100%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:100%; height: 100%">
->>>>>>> Stashed changes
                     </div>
             	</div>
 
