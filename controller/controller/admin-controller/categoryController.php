@@ -54,8 +54,19 @@
     break;
     // xóa categories
   case 'cateDel':
-    $cate = new Categories();
     $id = $_GET['id'];
+    $cate = new Categories();
+    $order= new Order();
+    $product = new Products();
+    $certif = new Certificates();
+    $title = new ShowTitle();
+    $resultProduct = $product -> getProductByCate ($id);
+    foreach ($resultProduct as $valueProduct) {
+      $order -> delDetailByProduct($valueProduct['product_id']);
+      $certif -> delCertificateByProduct($valueProduct['product_id']);
+      $title -> delShowTitleByProduct($valueProduct['product_id']);
+    }
+    $product -> delProductByCate ($id);
     $cate -> delCategory($id);
     $mes = "Xóa Categories thành công";
     $action = 'cateList';

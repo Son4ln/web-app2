@@ -35,7 +35,13 @@
 			$query = "delete from show_title where show_title_id ='$id'";
 			$db -> exec($query);
 		}
-		
+
+		public function delShowTitleByProduct ($id){
+			$db = new connect();
+			$query = "delete from show_title where product_id ='$id'";
+			$db -> exec($query);
+		}
+
 		//đếm số hàng theo title_id trong bảng show_title
 		public function countShowTitleById($id){
 			$db = new connect();
@@ -43,7 +49,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng theo title_id và brand_id trong bảng show_title
 		public function countShowTitleByIdB($id, $brand_id){
 			$db = new connect();
@@ -51,7 +57,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng theo title_id và feature_id trong bảng show_title
 		public function countShowTitleByIdF($id, $feature_id){
 			$db = new connect();
@@ -59,7 +65,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số hàng theo title_id và origin trong bảng show_title
 		public function countShowTitleByIdO($id, $origin_id){
 			$db = new connect();
@@ -67,7 +73,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu có trong bảng show_title
 		public function getShowTitleNew($id, $from, $to) {
 			$db = new connect();
@@ -83,7 +89,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng tính năng trong bảng products
 		public function countProductShowTitleFeatureById ($id, $feature_id) {
 			$db = new connect();
@@ -91,7 +97,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm số lượng sản phẩm theo từng nguồn gốc trong bảng products
 		public function countProductShowTitleOriginById ($id, $origin_id) {
 			$db = new connect();
@@ -99,7 +105,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng thương hiệu trong bảng products
 		public function getProductShowTitleBrand ($id) {
 			$db = new connect();
@@ -107,7 +113,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng tính năng trong bảng products
 		public function getProductShowTitleFeature ($id) {
 			$db = new connect();
@@ -115,7 +121,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//lấy dữ liệu sản phẩm theo từng nguồn gốc trong bảng products
 		public function getProductShowTitleOrigin ($id) {
 			$db = new connect();
@@ -123,7 +129,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//SHOW PRODUCT SELECTED FROM SHOW_TITLE
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products và show_title
 		public function getProductShowTitleLimit ($id, $from, $to){
@@ -132,7 +138,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products và show_title theo brand_id
 		public function getProductShowTitleLimitB ($id, $brand_id, $from, $to){
 			$db = new connect();
@@ -140,7 +146,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products và show_title theo feature_id
 		public function getProductShowTitleLimitF ($id, $feature_id, $from, $to){
 			$db = new connect();
@@ -148,7 +154,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//phương thức hiển thị giới hạn sản phẩm trong bảng products và show_title theo origin_id
 		public function getProductShowTitleLimitO ($id, $origin_id, $from, $to){
 			$db = new connect();

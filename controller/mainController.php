@@ -51,6 +51,9 @@ if(isset($_GET["action"])){
      $certif_dir='public/client/images/certificates';
      $certif_dir_path=getcwd().DIRECTORY_SEPARATOR.$certif_dir;
 
+     $logo_dir='public/client/images';
+     $logo_dir_path=getcwd().DIRECTORY_SEPARATOR.$logo_dir;
+
  //include điều hướng vào đây
     include "../controller/clientController.php";
     include "../controller/adminController.php";

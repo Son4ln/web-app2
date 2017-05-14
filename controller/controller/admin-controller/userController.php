@@ -86,6 +86,25 @@
     $mes = "Xóa User thành công";
     $user = new Users();
     $id = $_GET['id'];
+    $blog = new Blogs();
+    $order= new Order();
+    $product = new Products();
+    $certif = new Certificates();
+    $title = new ShowTitle();
+    $resultProduct = $product -> getProductByUserId ($id);
+    $resultOrderDetail = $order -> getOrderDetailByOrderId ($id);
+    foreach ($resultProduct as $valueProduct) {
+      $order -> delDetailByProduct($valueProduct['product_id']);
+      $certif -> delCertificateByProduct($valueProduct['product_id']);
+      $title -> delShowTitleByProduct($valueProduct['product_id']);
+    }
+    foreach ($resultOrderDetail as $valueDetail) {
+      $order -> delDetail($valueDetail['order_id']);
+    }
+    $order -> delOrderByUser($id);
+    $product -> delProductByUser ($id);
+    $blog -> delBlogByUser ($id);
+
     $user -> delUser($id);
     $delImg = $user -> getUserById($id);
     if(file_exists($ava_dir_path.DIRECTORY_SEPARATOR.$delImg['avatar'])){

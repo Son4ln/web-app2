@@ -34,13 +34,20 @@
                         <tbody>
                             <?php
                                 $products = new Products();
-                                $data = $products -> getProducts();
+                                if($_SESSION['permission04516'] == 0){
+                                    $data = $products -> getProducts();
+                                }else{
+                                    $data = $products -> getProductByUser($_SESSION['userId04576']);
+                                }
+
+                                if(empty($data)){}
                                 foreach ($data as $value) {
+
                             ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $value['product_id']; ?></td>
                                 <td><?php echo $value['product_name']; ?></td>
-                                <td><img src="public/client/images/product/<?php echo $value['product_image']; ?>" height="100"></td>
+                                <td><img src="public/client/images/product/<?php echo $value['product_image']; ?>" height="50"></td>
                                 <td><?php echo $value['product_price']; ?></td>
                                 <td><?php
                                     $cate = new Categories();

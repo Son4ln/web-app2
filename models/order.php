@@ -32,6 +32,12 @@
 			$db -> exec($query);
 		}
 
+		function delDetailByProduct($id){
+			$db = new connect();
+			$query = "delete from order_details where product_id ='$id'";
+			$db -> exec($query);
+		}
+
 		public function addOrder ($user, $orderDate, $deliveryDate, $orderCost, $status){
 			$db = new connect();
 			$query = "insert into orders values('','$user','$orderDate', '$deliveryDate', '$orderCost', '$status')";
@@ -62,6 +68,12 @@
 		public function delOrder($id){
 			$db = new connect();
 			$query = "delete from orders where order_id ='$id'";
+			$db -> exec($query);
+		}
+
+		public function delOrderByUser($id){
+			$db = new connect();
+			$query = "delete from orders where user_id ='$id'";
 			$db -> exec($query);
 		}
 		//đếm số hàng sản phẩm bán chạy
@@ -184,6 +196,18 @@
 			$query = "select * from  products where origin_id = $origin_id and product_id in (select product_id from order_details group by product_id) limit $from, $to";
 			$result = $db -> getList($query);
 			return $result;
+		}
+
+		public function updateShipDate ($id, $delivery){
+			$db = new connect();
+			$query = "update orders set delivery_date = '$delivery' where order_id = '$id'";
+			$db -> exec($query);
+		}
+
+		public function updateStatus($id, $status){
+			$db = new connect();
+			$query = "update orders set order_status = '$status' where order_id = '$id'";
+			$db -> exec($query);
 		}
 	}
 ?>

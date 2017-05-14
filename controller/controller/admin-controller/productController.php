@@ -206,6 +206,14 @@
   case 'productDel':
     $products = new Products();
     $id = $_GET['id'];
+    $order= new Order();
+    $certif = new Certificates();
+    $title = new ShowTitle();
+    //xóa các bảng liên quan trước khi xóa sản phẩm
+    $order -> delDetailByProduct($id);
+    $certif -> delCertificateByProduct($id);
+    $title -> delShowTitleByProduct($id);
+
     $products -> delProduct($id);
     $delImg = $products -> getProductById($id);
     if(file_exists($product_dir_path.DIRECTORY_SEPARATOR.$delImg['product_image'])){

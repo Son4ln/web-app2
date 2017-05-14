@@ -74,6 +74,29 @@
 	  include "../views/admin/order/order_detail.php";
 	break;
 
+	case 'shipping':
+		$id = $_GET['id'];
+		$delivery = date('Y/m/d');
+		$order = new Order();
+		$order -> updateShipDate ($id, $delivery);
+		$action = 'orderList';
+        $mes = 'Đã cập nhập ngày giao hàng';
+        $typeOfMes = 'alert-success';
+        redirect($action,$mes,$typeOfMes);
+		break;
+
+	case 'updateStatus':
+		$id = $_GET['id'];
+		$status = $_GET['status'];
+		$order = new Order();
+		$order -> updateStatus($id, $status);
+		$action = 'orderList';
+        $mes = 'Đã chỉnh sửa trạng thái';
+        $typeOfMes = 'alert-success';
+        redirect($action,$mes,$typeOfMes);
+		break;
 
 	}
+
+
 ?>
