@@ -58,6 +58,86 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
+		
+		//tìm kiếm blog
+		public function searchBlog ($search) {
+			$db = new connect();
+			$query = "SELECT * FROM blogs WHERE blog_title LIKE '%$search%' OR blog_title LIKE '$search' ORDER BY blog_id DESC LIMIT 20";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//tìm kiếm product
+		public function searchProduct ($search) {
+			$db = new connect();
+			$query = "SELECT * FROM products WHERE product_name LIKE '%$search%' OR product_name LIKE '$search' ORDER BY product_id DESC LIMIT 20";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//tìm kiếm brand
+		public function searchBrand ($search) {
+			$db = new connect();
+			$query = "SELECT * FROM brands WHERE brand_name LIKE '%$search%' OR brand_name LIKE '$search' ORDER BY brand_id DESC LIMIT 20";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//tìm kiếm feature
+		public function searchFeature ($search) {
+			$db = new connect();
+			$query = "SELECT * FROM product_features WHERE feature_name LIKE '%$search%' OR feature_name LIKE '$search' ORDER BY feature_id DESC LIMIT 20";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//tìm kiếm origin
+		public function searchOrigin ($search) {
+			$db = new connect();
+			$query = "SELECT * FROM in_origin WHERE  name_of_origin LIKE '%$search%' OR name_of_origin LIKE '$search' ORDER BY origin_id DESC LIMIT 20";
+			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//đếm kết quả tìm kiếm blog
+		public function countSearchBlog ($search) {
+			$db = new connect();
+			$query = "SELECT count(*) FROM blogs WHERE blog_title LIKE '%$search%' OR blog_title LIKE '$search' ORDER BY blog_id DESC LIMIT 20";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm kết quả tìm kiếm product
+		public function countSearchProduct ($search) {
+			$db = new connect();
+			$query = "SELECT count(*) FROM products WHERE product_name LIKE '%$search%' OR product_name LIKE '$search' ORDER BY product_id DESC LIMIT 20";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm kết quả tìm kiếm brand
+		public function countSearchBrand ($search) {
+			$db = new connect();
+			$query = "SELECT count(*) FROM brands WHERE brand_name LIKE '%$search%' OR brand_name LIKE '$search' ORDER BY brand_id DESC LIMIT 20";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm kết quả tìm kiếm feature
+		public function countSearchFeature ($search) {
+			$db = new connect();
+			$query = "SELECT * FROM product_features WHERE feature_name LIKE '%$search%' OR feature_name LIKE '$search' ORDER BY feature_id DESC LIMIT 20";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//đếm kết quả tìm kiếm origin
+		public function countSearchOrigin ($search) {
+			$db = new connect();
+			$query = "SELECT count(*) FROM in_origin WHERE  name_of_origin LIKE '%$search%' OR name_of_origin LIKE '$search' ORDER BY origin_id DESC LIMIT 20";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
 
 
 	}

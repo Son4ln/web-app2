@@ -60,7 +60,7 @@ if(empty($_SESSION['messages']))
 										</div>
 										<br /><br />
 										<div>
-											<input type="submit"  class="btn btn-primary" value="Update" onclick="validate();" />
+											<input type="submit"  class="btn btn-primary btn-login" value="Update" onclick="validate();" />
 											<input class="btn btn-default" type="reset" value="Reset" />
 										</div>
 									</form>
@@ -125,7 +125,7 @@ if(empty($_SESSION['messages']))
 								</div>
                                 <br />
                                 <div style="text-align: center">
-                                    <input type="submit" class="btn btn-primary" value="Update" onclick="return validate1()" />
+                                    <input type="submit" class="btn btn-primary btn-login" value="Update" onclick="return validate1()" />
                                     <input class="btn btn-default" type="reset" value="Reset" />
                                 </div>
                             </form></div></div></center>
@@ -149,7 +149,7 @@ if(empty($_SESSION['messages']))
                                     <input type="hidden" class="textbox" value="<?php echo $set['username'];?>" name="username"/>
                                     <input type="hidden" name="action" value="upload"/>
                                     <input class="button" type="file" name="file1" /><br /><br />
-                                    <input  class="btn btn-primary" type="submit" name="uploadclick" value="Upload"/>
+                                    <input  class="btn btn-primary btn-login" type="submit" name="uploadclick" value="Upload"/>
                                     </form></center>
                             <br />
                                     <?php
@@ -159,7 +159,7 @@ if(empty($_SESSION['messages']))
         </div>
 </section>
     <?php
-    include 'footer.php';?>
+    include '../views/client/footer.php';?>
 <script type="text/javascript">
 	function clearAlert(){
 		document.getElementById('alert-pass').innerHTML = "";

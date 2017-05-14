@@ -21,6 +21,14 @@
 			$result = $db ->getInstance($query);
 			return $result;
 		}
+		
+		//lấy id thông qua tên sản phẩm
+		public function getProductByName ($name) {
+			$db = new connect();
+			$query = "select product_id from products where product_name = '$name'";
+			$result = $db ->getInstance($query);
+			return $result;
+		}
 
 		//thêm dữ liệu vào brands
 		public function addProducts ($name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $inStock, $categoriesId, $featureId, $brandId, $originId, $userId){

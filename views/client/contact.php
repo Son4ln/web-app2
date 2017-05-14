@@ -31,27 +31,32 @@ if(empty($_SESSION['messages']))
 									<input type="text" name="fname" value="" size="80%" class="form-control" placeholder="Full Name" required = "required">
 								</div>
 							</div>
+							<br />
 							<div class="row">
 								<div class="col-md-12">
 									<input type="text" name="address" value="" size="80%" class="form-control" placeholder="Address" required>
 								</div>
 							</div>
+							<br />
 							<div class="row">
 								<div class="col-md-12">
 									<input type="email" name="from" value="" size="80%" class="form-control" placeholder="Email"  required>
 								</div>
 							</div>
+							<br />
 							<div class="row">
 								<div class="col-md-12">
 									<input type="text" name="subject" value="" size="80%" class="form-control" placeholder="Subject" required>
 								</div>
 							</div>
+							<br />
 							<div class="row">
 								<div class="col-md-12">
 									<textarea name="message" cols="80%" rows="7" class="form-control" placeholder="Message" required></textarea>
 								</div>
 							</div>
-							<center><p><input type="submit" value="Send"  class="btn btn-primary" ></p></center>
+							<br />
+							<p><input type="submit" value="Send"  class="btn btn-primary btn-login" ></p>
                         </form>
 					</div>
                 </div>

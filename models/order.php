@@ -19,6 +19,22 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
+		
+		//tạo hóa đơn khi người dùng nhấn nút thanh toán
+		public function createOrder($user_id){
+			$db = new connect();
+			$date = new DateTime("now");
+			$order_date = $date->format("Y-m-d");
+			$query = "INSERT INTO orders VALUES ('','$user_id','$order_date','', 0 , 1)";
+			$db->exec($query);     
+		}
+		
+		function getOrderId(){
+			$db = new connect();
+			$query = "select order_id from orders ORDER by order_id DESC limit 0,1";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
 
 		function addDetail($orderId, $productId, $quantity, $price, $discount, $total){
 			$db = new connect();
@@ -56,6 +72,14 @@
 			$query = "select * FROM order_details WHERE order_id = '$id'"
 			;
 			$result = $db -> getList($query);
+			return $result;
+		}
+		
+		//lấy chi tiết hóa đơn (orderdetails)
+		public function getOrderDetail($order_id){
+			$db = new connect();
+			$select = "SELECT products.product_id,product_name,order_details.product_price,order_details.product_discount,order_quantity,total FROM products JOIN order_details ON products.product_id = order_details.product_id WHERE order_id='$order_id'";
+			$result = $db->getList($select);
 			return $result;
 		}
 

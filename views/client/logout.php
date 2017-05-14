@@ -1,5 +1,5 @@
 <?php
-        include 'header.php';
+        include '../views/client/header.php';
     ?>
 <section class="section white" style="text-align: left;">
     <div class="container">
@@ -26,4 +26,4 @@
         </div>
 </section>
 <?php 
-    include 'footer.php';?>
+    include '../views/client/footer.php';?>
