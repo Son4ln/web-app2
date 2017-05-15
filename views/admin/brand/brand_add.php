@@ -10,6 +10,9 @@
                     </h1>
                 </div>
                 <div class="col-lg-12">
+                    <div style="display: none;" id="alert-mes" class="alert alert-danger"></div>
+                </div>
+                <div class="col-lg-12">
                     <?php echo $alert; ?>
                 </div>
                     <!-- /.col-lg-12 -->
@@ -17,13 +20,13 @@
                     <form action="?action=brandAddAction" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Tên Brand</label>
-                            <input class="form-control" name="brandName" placeholder="Nhập tên brand" />
+                            <input class="form-control" name="brandName" id="brandName" placeholder="Nhập tên brand" />
                         </div>
                         <div class="form-group">
                             <label>Hình Ảnh</label>
-                            <input class="form-control" name="brandImg" type="file" placeholder="Please Enter Category Keywords" />
+                            <input class="form-control" name="brandImg" id="brandImg" type="file" placeholder="Please Enter Category Keywords" />
                         </div>
-                        <button type="submit" name="brandUpload" class="btn btn-primary">Thêm Brand</button>
+                        <button type="submit" onclick="return validBrand()" name="brandUpload" class="btn btn-primary">Thêm Brand</button>
                         <button type="reset" class="btn btn-default">Reset</button>
                     <form>
                 </div>

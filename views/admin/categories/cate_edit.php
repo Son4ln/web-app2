@@ -21,7 +21,7 @@
                                 $data = $slide -> getCategoryById($id);
                              ?>
                             <div class="form-group">
-                                <label>Đường dẫn</label>
+                                <label>Tên category</label>
                                 <input class="form-control" type="hidden" name="cateId" value="<?php echo $data['category_id']; ?>" />
                                 <input class="form-control" name="cateName" value="<?php echo $data['category_name']; ?>" placeholder="Nhập đường dẫn" />
                             </div>

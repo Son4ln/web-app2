@@ -11,6 +11,9 @@
                         </h1>
                     </div>
                     <div class="col-lg-12">
+                      <div style="display: none;" id="alert-mes" class="alert alert-danger"></div>
+                    </div>
+                    <div class="col-lg-12">
                         <?php echo $alert; ?>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -28,13 +31,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Images</label>
-                                <input type="file" name="bImages" class="form-control">
+                                <input type="file" name="bImages" id="eBImg" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Đường dẫn</label>
-                                <input class="form-control" name="bLink" value="<?php echo $data['slide_link']; ?>" placeholder="Nhập đường dẫn" />
+                                <input class="form-control" name="bLink" id="eBLink" value="<?php echo $data['slide_link']; ?>" placeholder="Nhập đường dẫn" />
                             </div>
-                            <button type="submit" class="btn btn-primary">Sửa Banner</button>
+                            <button type="submit" onclick="return validEditBanner()" class="btn btn-primary">Sửa Banner</button>
                             <a onclick="goback()" class="btn btn-default">Cancel</a>
                         <form>
                     </div>

@@ -28,49 +28,59 @@
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="?action=productAddAction" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input class="form-control" type="text" name="txtName"  />
+                                <label>Name (*)</label>
+                                <input class="form-control" type="text" id="txtName" name="txtName"  />
+                                <p style="color: red"><i id="alertName"></i></p>
                             </div>
                             <div class="form-group">
-                                <label>Ảnh 1</label>
-                                <input type="file" class="form-control" name="fImages1">
+                                <label>Ảnh 1 (*)</label>
+                                <input type="file" class="form-control" id="fImages1" name="fImages1">
+                                <p style="color: red"><i id="alertimg1"></i></p>
                             </div>
                             <div class="form-group">
-                                <label>Ảnh 2</label>
-                                <input type="file" class="form-control" name="fImages2">
+                                <label>Ảnh 2 (*)</label>
+                                <input type="file" class="form-control" id="fImages2" name="fImages2">
+                                <p style="color: red"><i id="alertimg2"></i></p>
                             </div>
                             <div class="form-group">
-                                    <label>Ảnh 3</label>
-                                    <input type="file" class="form-control" name="fImages3">
+                                    <label>Ảnh 3 (*)</label>
+                                    <input type="file" class="form-control" id="fImages3" name="fImages3">
+                                    <p style="color: red"><i id="alertimg3"></i></p>
                             </div>
                             <div class="form-group">
-                                <label>Price</label>
-                                <input class="form-control" type="number" name="txtPrice"   />
+                                <label>Price (*)</label>
+                                <input class="form-control" type="number" id="txtPrice" name="txtPrice"   />
+                                <p style="color: red"><i id="alertprice"></i></p>
                             </div>
                             <div class="form-group">
-                                <label>Discount</label>
-                                <input class="form-control" type="number"  rows="3" name="txtDiscount">
+                                <label>Discount (*)</label>
+                                <input class="form-control" type="number" id="txtDiscount"  rows="3" name="txtDiscount">
+                                <p style="color: red"><i id="alertdisc"></i></p>
                             </div>
                             <div class="form-group">
-                                <label>Currency</label>
-                                <input type="text" class="form-control"  rows="3" name="txtCurrency">
+                                <label>Currency (*)</label>
+                                <input type="text" class="form-control" id="txtCurrency"  rows="3" name="txtCurrency">
+                                <p style="color: red"><i id="alertcerren"></i></p>
                             </div>
                             <div class="form-group">
-                                <label>Mô tả</label>
-                                <textarea class="form-control" name="txtDesc" ></textarea>
+                                <label>Mô tả (*)</label>
+                                <textarea class="form-control" id="txtDesc" name="txtDesc" ></textarea>
+                                <p style="color: red"><i id="alertdesc"></i></p>
                             </div>
                             <div class="form-group">
-                                <label>Chi tiết</label>
-                                <textarea name="txtDetail" class="form-control" rows="3">
+                                <label>Chi tiết (*)</label>
+                                <textarea name="txtDetail" id="txtDetail" class="form-control" rows="3">
 
                                 </textarea>
+                                <p style="color: red"><i id="alertdetail"></i></p>
                                  <script>
                                     CKEDITOR.replace( 'txtDetail');
                                 </script>
                             </div>
                             <div class="form-group">
-                                <label>Product in stock</label>
-                                <input type="number" class="form-control" value="<?php echo $result['product_in_stock']; ?>" rows="3" name="txtStock">
+                                <label>Product in stock (*)</label>
+                                <input type="number" class="form-control" id="txtStock" rows="3" name="txtStock">
+                                <p style="color: red"><i id="alertstock"></i></p>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
@@ -128,7 +138,7 @@
                                 </select>
 
                             </div>
-                            <button type="submit" class="btn btn-default">Product Add</button>
+                            <button type="submit" onclick="return validProduct();" class="btn btn-primary">Product Add</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

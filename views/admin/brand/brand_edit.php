@@ -11,6 +11,9 @@
                         </h1>
                     </div>
                     <div class="col-lg-12">
+                      <div style="display: none;" id="alert-mes" class="alert alert-danger"></div>
+                    </div>
+                    <div class="col-lg-12">
                         <?php echo $alert; ?>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -24,7 +27,7 @@
                         <div class="form-group">
                             <input class="form-control" type="hidden" value="<?php echo $data['brand_id']; ?>" name="brandId" />
                             <label>Tên Brand</label>
-                            <input class="form-control" value="<?php echo $data['brand_name']; ?>" name="brandName" />
+                            <input class="form-control" value="<?php echo $data['brand_name']; ?>" name="brandName" id="eBrandName" />
                         </div>
                         <div class="form-group">
                             <label>Ảnh cũ</label>
@@ -35,7 +38,7 @@
                             <label>Hình Ảnh</label>
                             <input class="form-control" name="brandImg" type="file" />
                         </div>
-                        <button type="submit" name="brandUpload" class="btn btn-primary">Sửa Brand</button>
+                        <button type="submit" onclick="return validBrandEdit()" name="brandUpload" class="btn btn-primary">Sửa Brand</button>
                         <a onclick="goback()" class="btn btn-default">Cancel</a>
                     <form>
                     </div>

@@ -17,15 +17,18 @@
                     <form action="?action=blogAddAction" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Tiêu Đề</label>
-                            <input class="form-control" name="blogTitle" placeholder="Vui lòng nhập tiêu đề" />
+                            <input class="form-control" id="blogTitle" name="blogTitle" placeholder="Vui lòng nhập tiêu đề" />
+                            <p style="color: red"><i id="alertBlog"></i></p>
                         </div>
                         <div class="form-group">
                             <label>Ảnh đại diện</label>
-                            <input class="form-control" name="featureImg" type="file" placeholder="Please Enter Category Keywords" />
+                            <input class="form-control" id="featureImg" name="featureImg" type="file" />
+                            <p style="color: red"><i id="alertBlogImg"></i></p>
                         </div>
                         <div class="form-group">
                             <label>Mô tả</label>
-                            <textarea name="desc" class="form-control" placeholder="Vui lòng nhập mô tả"></textarea>
+                            <textarea name="desc" id="blogDesc" class="form-control" placeholder="Vui lòng nhập mô tả"></textarea>
+                            <p style="color: red"><i id="alertDescription"></i></p>
                         </div>
                         <div class="form-group">
                             <label>Nội dung bài viết</label>
@@ -34,7 +37,7 @@
                                 CKEDITOR.replace( 'contents');
                             </script>
                         </div>
-                        <button type="submit" name="brandUpload" class="btn btn-primary">Thêm Blog</button>
+                        <button type="submit" onclick="return validBlog();" name="brandUpload" class="btn btn-primary">Thêm Blog</button>
                         <button type="reset" class="btn btn-default">Reset</button>
                     <form>
                 </div>

@@ -10,6 +10,9 @@
                     </h1>
                 </div>
                 <div class="col-lg-12">
+                    <div style="display: none;" id="alert-mes" class="alert alert-danger"></div>
+                </div>
+                <div class="col-lg-12">
                     <?php echo $alert; ?>
                 </div>
                     <!-- /.col-lg-12 -->
@@ -17,9 +20,9 @@
                     <form action="?action=addFeatureAction" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Tên Feature</label>
-                            <input class="form-control" name="fName" />
+                            <input class="form-control" name="fName" id="fName" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Thêm Feature</button>
+                        <button type="submit" onclick="return validFeature();" class="btn btn-primary">Thêm Feature</button>
                         <button type="reset" class="btn btn-default">Reset</button>
                     <form>
                 </div>

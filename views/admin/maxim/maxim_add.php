@@ -13,12 +13,15 @@
                     <div class="col-lg-12">
                         <?php echo $alert; ?>
                     </div>
+                    <div class="col-lg-7">
+                      <div style="display: none;" id="alert-mes" class="alert alert-danger"></div>
+                    </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="?action=addMaximAction" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Nội Dung</label>
-                                <textarea name="mContent" class="form-control"></textarea>
+                                <textarea name="mContent" id="mContent" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Background</label>
@@ -34,7 +37,7 @@
                                     </option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Thêm Châm Ngôn</button>
+                            <button type="submit" onclick="return validMaxim()" class="btn btn-primary">Thêm Châm Ngôn</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

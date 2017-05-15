@@ -11,6 +11,9 @@
                         </h1>
                     </div>
                     <div class="col-lg-12">
+                      <div style="display: none;" id="alert-mes" class="alert alert-danger"></div>
+                    </div>
+                    <div class="col-lg-12">
                         <?php echo $alert; ?>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -18,7 +21,7 @@
                         <form action="?action=cateAddAction" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Tên Category</label>
-                                <input class="form-control" name="cateName" placeholder="Nhập Category" />
+                                <input class="form-control" name="cateName" id="cateName" placeholder="Nhập Category" />
                             </div>
                             <div class="form-group">
                                 <label>Parent</label>
@@ -35,7 +38,7 @@
                                     <?php cateParent($cate); ?>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Thêm Category</button>
+                            <button type="submit" onclick="return validCate()" class="btn btn-primary">Thêm Category</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>
