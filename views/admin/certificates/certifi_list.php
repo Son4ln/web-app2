@@ -16,8 +16,12 @@
                     <?php
                         $certifi = new Certificates();
                         $data = $certifi -> getCertificates ();
+<<<<<<< HEAD
                         if(empty($data)){
                         }else{ 
+=======
+
+>>>>>>> 2a50facba1d0bc5d414957d3d9d60ccd688d22d7
                     ?>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -31,7 +35,14 @@
                             </tr>
                         </thead>
                         <tbody>
+<<<<<<< HEAD
                             <?php foreach ($data as $key) {
+=======
+                            <?php
+                            if(empty($data)){
+                            }
+                            else{ foreach ($data as $key) {
+>>>>>>> 2a50facba1d0bc5d414957d3d9d60ccd688d22d7
                              ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['certificate_id']; ?></td>
