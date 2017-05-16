@@ -71,7 +71,7 @@
 						$srBlog = $objBlog->searchBlog($search);
 						echo "<br /><h4 class='title1' style='margin-bottom:0px;'>+ Blog: ". $countBlog[0]."</h4>";
 						foreach($srBlog as $result){
-							echo '<div class="col-md-4"><a href="?action=viewBlog&id='.$result["blog_id"].'" >'.$result["blog_title"].'</a></div>';
+							echo '<div class="col-md-6"><a href="?action=viewBlog&id='.$result["blog_id"].'" >'.$result["blog_title"].'</a></div>';
 						}
 						echo "<br />";
 					}

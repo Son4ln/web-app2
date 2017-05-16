@@ -29,6 +29,24 @@
                                     ?></td>
                                 </tr>
                                 <tr>
+                                    <td><b>Số điện thoại :</b></td>
+                                    <td><?php
+                                        echo $userData['phone'];
+                                    ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Email :</b></td>
+                                    <td><?php
+                                        echo $userData['email'];
+                                    ?></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Địa chỉ giao hàng :</b></td>
+                                    <td><?php
+                                        echo $userData['address'];
+                                    ?></td>
+                                </tr>
+                                <tr>
                                     <td><b>Ngày Đặt Hàng :</b></td>
                                     <td><?php echo $data['order_date']; ?></td>
                                 </tr>

@@ -17,8 +17,7 @@
                         $certifi = new Certificates();
                         $data = $certifi -> getCertificatesAndProducts ();
                         $product = new Products();
-                        if(empty($data)){
-                        }
+
                     ?>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -33,7 +32,8 @@
                         </thead>
                         <tbody>
 
-                            <?php else{ foreach ($data as $key) {
+                            <?php if(empty($data)){
+                                } else { foreach ($data as $key) {
                              ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['show_id']; ?></td>

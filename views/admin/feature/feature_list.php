@@ -16,7 +16,6 @@
                     <?php
                         $feature = new Features();
                         $data = $feature -> getFeatures ();
-                        if(empty($data)){}
                     ?>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -29,7 +28,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php else { foreach ($data as $key) {
+                            <?php if(empty($data)){} else { foreach ($data as $key) {
                              ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['feature_id']; ?></td>
