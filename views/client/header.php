@@ -50,7 +50,7 @@
             $customer = new Users();
             $quest = $customer->getUsername($username);
     ?>
-        <div id='menu' style="height: 40px; margin-right: 8%;">
+        <div id='menu' style="height: 50px; margin-right: 8%;">
 			<ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown" style="margin-top:-5px; height: 40px;">

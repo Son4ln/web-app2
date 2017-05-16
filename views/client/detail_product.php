@@ -19,20 +19,40 @@
                         <div class="box-images-small" style="margin: 0;">
                             <img class="images-small images-opacity images-hover-opacity-off zoom" id='zoom1' src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:50%" onclick="currentDiv(1)">
                         </div>
-                        <div class="box-images-small">
-                          <img class="images-smallmo images-opacity images-hover-opacity-off zoom" id='zoom1' src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:50%" onclick="currentDiv(2)">
-                        </div>
-                        <div class="box-images-small">
-                          <img class="images-smallmo images-opacity images-hover-opacity-off zoom" id='zoom1' src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:50%" onclick="currentDiv(3)">
-                        </div>
+						<?php
+							if($detailPro['product_image1'] != null){
+						?>
+							<div class="box-images-small">
+								<img class="images-smallmo images-opacity images-hover-opacity-off zoom" id='zoom1' src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:50%" onclick="currentDiv(2)">
+							</div>
+						<?php
+							}
+							if($detailPro['product_image2'] != null){
+						?>
+							<div class="box-images-small">
+								<img class="images-smallmo images-opacity images-hover-opacity-off zoom" id='zoom1' src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:50%" onclick="currentDiv(3)">
+							</div>
+						<?php
+							}
+						?>
                     </div>
             	</div>
 
             	<div class="col-sm-9 col-xs-12">
                     <div class="product-images-large product-border">
                         <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image']; ?>" style="width:auto; height: 100%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:auto; height: 100%">
-                        <img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:auto; height: 100%">
+						<?php
+							if($detailPro['product_image1'] != null){
+						?>
+							<img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image1']; ?>" style="width:auto; height: 100%">
+						<?php
+							}
+							if($detailPro['product_image2'] != null){
+						?>
+							<img class="images-large" src="<?php echo '../controller/public/client/images/product/'.$detailPro['product_image2']; ?>" style="width:auto; height: 100%">
+						<?php
+							}
+						?>
                     </div>
             	</div>
 
@@ -150,8 +170,8 @@
 							<input type="hidden" name="productkey" value="<?php echo $client_id;?>"/>
                             <fieldset id="add-to-cart">
                                 <label for="quantity">Enter Qty</label>
-                                	<input class="add-qty" id="quantity" name="itemqty" type="text" value="1" maxlength="3">
-									<input type="submit" class="add-btn" value="Add to Cart" >
+                                	<input id="quantity" name="itemqty" type="number" min="1" max="<?php  echo $detailPro['product_in_stock']; ?>" width="60px">
+									<input type="submit" class="btn btn-primary btn-login" value="Add to Cart" >
 	                        </fieldset>
 						</form>
                     </div><h2 class="bold">Product Description</h2>

@@ -798,6 +798,11 @@
 														<a href="?action=viewProduct&id=<?php echo $list['product_id']; ?>"><?php echo $list['product_name']; ?></a>
 													</h2>
 													<p class="desc"><?php echo nl2br($list['product_description']); ?></p>
+														<?php 
+															if($list['product_in_stock'] == 0){
+																echo '<p><span class="price">Sold out   </span>';
+															}else{
+														?>
 													<?php
 														if($list['product_discount']!=0){
 													?>
@@ -816,11 +821,11 @@
 														}
 														?>
 													<div class="add-box">
-														<form action="?action=add_cart" method="post" name="add_cart">
-															<input type="hidden" name="productkey" value="<?php echo $list['product_id'];?>"/>
-																<input class="add-qty" id="quantity" name="itemqty" type="hidden" value="1">
-																<input type="submit" class="add-btn" value="Add to Cart" >
-														</form>
+																<form action="?action=add_cart" method="post" name="add_cart">
+																	<input type="hidden" name="productkey" value="<?php echo $list['product_id'];?>"/>
+																		<input class="add-qty" id="quantity" name="itemqty" type="hidden" value="1">
+																		<input type="submit" class="add-btn" value="Add to Cart" >
+																</form>
 														<?php
 															if($list['product_discount']==0){
 														?>
@@ -848,6 +853,9 @@
 															}}
 														?>
 													</div>
+													<?php
+														}
+													?>
 												</div>
 											</div>
 									<?php

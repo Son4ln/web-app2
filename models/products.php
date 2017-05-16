@@ -724,6 +724,24 @@
 
 //END PRODUCT
 
+//IN STOCK
+		//lấy số lượng sản phẩm còn trong kho
+		public function getInStock ($id) {
+			$db = new connect();
+			$query = "select product_in_stock from  products where product_id = '$id'";
+			$result = $db -> getInstance($query);
+			return $result;
+		}
+		
+		//cập nhật số lượng sản phẩm còn trong kho khi mua hàng
+		public function updateInStock ($id, $qty) {
+			$db = new connect();
+			$query = "update products set product_in_stock = '$qty' where product_id = '$id'";
+			$db -> exec($query);
+		}
+
+//END IN STOCK
+
 
 
 

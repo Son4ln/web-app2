@@ -435,11 +435,15 @@
 						$order_date = $date->format("Y-m-d");
 						$subject = 'Orders Date: '.$order_date.', Customer: '.$result['full_name'];
 						$is_body_html = true;
+						$objPro = new Products();
 
 					try {
 						foreach($_SESSION['cartview04516'] as $key => $item){
 							$objOrder->addDetail($order_id[0],$key, $item['qty'] , $item['price'], $item['discount'], $item['total']);
 							$total += $item['total'];
+							$in_stock = $objPro->getInStock($key);
+							$qty = $in_stock[0] - $item['qty'];
+							$objPro->updateInStock ($key, $qty);
 						}
 						$objOrder->updateOrder($order_id[0], $total );
 						send_email2($fname,$address, $phone, $to, $from, $subject, $order_id[0], $is_body_html);
@@ -466,37 +470,6 @@
             }
 
             include '../views/client/cart.php';
-            break;
-
-        //Xóa giỏ hàng
-        case "empty_cart":
-            unset($_SESSION['cartview04516']);
-            include '../views/client/cart.php';
-            break;
-
-        //Mua Hàng
-        case "payments":
-
-           $username = $_SESSION['check'];
-           $d = $_POST['day'];
-           $m = $_POST['month'];
-           $y = $_POST['year'];
-           $order_delivery_date = $y."-".$m."-".$d;
-           $quest = new user();
-           $result = $quest->getInfoById($username);
-           $userid=$result[0];
-
-            $o = new order();
-            $order_id = $o->createOrder($userid);
-            $_SESSION['order_id']=$order_id;
-            $total = 0;
-            foreach($_SESSION['cartview04516'] as $key => $item)
-                 {
-                $o->orderDetails($order_id,$key, $item['qty'] , $item['cost'], $item['total']);
-                 $total += $item['total'];
-                 }
-                 $o->orderTotal($order_id, $total,$order_delivery_date );
-           include "../views/client/checkout.php";
             break;
 
 		// Gửi mail
