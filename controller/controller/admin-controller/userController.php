@@ -42,6 +42,12 @@
     //Bắt lỗi
     if (isset($_POST['uploadclick']))
     {
+      if($user -> checkUser($username)){
+        $mes = 'username đã được sử dụng';
+        $alert = showAlert($mes);
+        include "../views/admin/users/user_add.php";
+        break;
+      }
       if($pass != $rePass){
         $mes = 'Xác nhận mật khẩu sai';
         $alert = showAlert($mes);
