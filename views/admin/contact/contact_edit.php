@@ -71,6 +71,15 @@
                                 <label>Map</label>
                                 <input class="form-control"  type="text" name="map" value="<?php echo $data['map']; ?>"/>
                             </div>
+                            <div class="form-group">
+                                <label>Introduce</label>
+                                <textarea class="form-control"  type="text" name="content">
+                                    <?php echo $data['contact_info']; ?>
+                                </textarea>
+                                <script>
+                                CKEDITOR.replace( 'content');
+                                </script>
+                            </div>
                             <button type="submit" class="btn btn-primary">Sửa Contact</button>
                         <form>
                     </div>

@@ -17,9 +17,9 @@
 			$db -> exec($query);
 		}
 		//cập nhật dữ liệu cho bảng
-		public function updateContactInfo ($id, $company_name, $address, $headquarters, $branch, $contact_email, $vietnam_phone, $australia_phone, $fax, $logo_image, $map) {
+		public function updateContactInfo ($id, $company_name, $address, $headquarters, $branch, $contact_email, $vietnam_phone, $australia_phone, $fax, $logo_image, $map,$content) {
 			$db = new connect();
-			$query = "update contact_info set company_name = '$company_name', address = '$address', headquarters = '$headquarters', branch = '$branch', contact_email = '$contact_email', vietnam_phone = '$vietnam_phone', australia_phone = '$australia_phone', fax = '$fax', logo_image = '$logo_image', map = '$map' where info_id = '$id'";
+			$query = "update contact_info set company_name = '$company_name', address = '$address', headquarters = '$headquarters', branch = '$branch', contact_email = '$contact_email', vietnam_phone = '$vietnam_phone', australia_phone = '$australia_phone', fax = '$fax', logo_image = '$logo_image', map = '$map', contact_info = '$content' where info_id = '$id'";
 			$db -> exec($query);
 		}
 		//xóa dữ liệu bảng thông qua id
