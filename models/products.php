@@ -21,7 +21,7 @@
 			$result = $db ->getInstance($query);
 			return $result;
 		}
-		
+
 		//lấy id thông qua tên sản phẩm
 		public function getProductByName ($name) {
 			$db = new connect();
@@ -33,7 +33,7 @@
 		public function getProductByUser ($id) {
 			$db = new connect();
 			$query = "select * from products where user_id = '$id'";
-			$result = $db ->getInstance($query);
+			$result = $db ->getList($query);
 			return $result;
 		}
 
@@ -48,7 +48,7 @@
 		}
 
 		//cập nhập dữ liệu
-		public function updateProduct ($id, $name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $inStock, $categoriesId, $featureId, $brandId, $originId, $userId) {
+		public function updateProduct ($id, $name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $inStock, $categoriesId, $featureId, $brandId, $originId) {
 			$db = new connect();
 			$query = "update products set
 				product_name = '$name',
@@ -65,7 +65,6 @@
 				feature_id =  '$featureId',
 				brand_id =  '$brandId',
 				origin_id =  '$originId',
-				user_id =  '$userId'
 				where product_id = '$id'";
 			$db -> exec($query);
 		}

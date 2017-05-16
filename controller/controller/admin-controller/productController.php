@@ -94,7 +94,7 @@
     $feature = $_POST['featureId'];
     $brand = $_POST['brandId'];
     $origin = $_POST['originId'];
-    $user = 1;
+    $user = $_SESSION['userId04576'];
     $products -> addProducts($name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $stock, $cate, $feature, $brand, $origin, $user);
 
     $action = 'productList';
@@ -194,8 +194,7 @@
     $feature = $_POST['featureId'];
     $brand = $_POST['brandId'];
     $origin = $_POST['originId'];
-    $user = 1;
-    $products -> updateProduct($id, $name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $stock, $cate, $feature, $brand, $origin, $user);
+    $products -> updateProduct($id, $name, $img, $img1, $img2, $price, $discount, $currency, $desc, $detail, $stock, $cate, $feature, $brand, $origin);
 
     $action = 'productList';
     $mes = 'Sửa sản phẩm thành công';

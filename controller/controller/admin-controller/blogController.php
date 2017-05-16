@@ -121,7 +121,7 @@
       $content = $_POST['contents'];
     }
     $datePost = date('Y/m/d');
-    $user = 1;
+    $user = $_SESSION['userId04576'];
     $blog -> addBlogs($title, $img, $desc, $content, $datePost, $user);
     $mes = "Thêm Blogs thành công";
     $action = 'blogList';

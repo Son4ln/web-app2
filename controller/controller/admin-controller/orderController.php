@@ -19,7 +19,7 @@
 	case 'orderAddAction':
 	  $order = new Order();
 	  $product = new Products();
-	  $user = 1;
+	  $user = $_SESSION['userId04576'];
 	  $orderDate = date('Y/m/d');
       $deliveryDate = "";
       $orderCost = 0;

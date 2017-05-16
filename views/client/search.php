@@ -1,17 +1,25 @@
-<?php 
+<?php
 	include '../views/client/header.php';
 ?>
 <?php
+<<<<<<< HEAD
 	if(empty($_SESSION['messages']))
+=======
+    if(empty($_SESSION['messages']))
+>>>>>>> 9210de0a34125edcdc2b275bcb2e4ecf3a14c427
         {
             $messages="";
-            
+
         }
         else
         {
             $messages=$_SESSION['messages'];
         }
+<<<<<<< HEAD
 ?> 
+=======
+?>
+>>>>>>> 9210de0a34125edcdc2b275bcb2e4ecf3a14c427
 <!-- SEARCH -->
 <section class="section white" style="text-align: left;">
     <div class="container">

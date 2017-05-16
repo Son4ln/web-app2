@@ -27,6 +27,9 @@
                             <?php
                                 $list = new sliderShow();
                                 $data = $list -> getSlideShow();
+                                if(empty($data)){
+
+                                }else{
                                 foreach ($data as $key) {
 
                             ?>
@@ -37,7 +40,7 @@
 
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa Banner này')" href="?action=bannerdel&id=<?php echo $key['slide_id']; ?>"> Delete</a> | <i class="fa fa-pencil fa-fw"></i> <a href="?action=bannerEdit&id=<?php echo $key['slide_id']; ?>">Edit</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } }?>
                         </tbody>
                     </table>
                 </div>

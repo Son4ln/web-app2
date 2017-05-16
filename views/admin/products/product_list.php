@@ -40,7 +40,7 @@
                                     $data = $products -> getProductByUser($_SESSION['userId04576']);
                                 }
 
-                                if(empty($data)){}
+                                if(empty($data)){}else{
                                 foreach ($data as $value) {
 
                             ?>
@@ -66,7 +66,7 @@
                                     <i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa sản phẩm này')" href="?action=productDel&id=<?php echo $value['product_id']; ?>"> Delete</a><br/><hr style="margin: 0;padding: 0"/>
                                     <i class="fa fa-pencil fa-fw"></i> <a href="?action=productEdit&id=<?php echo $value['product_id']; ?>">Edit</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php }} ?>
                         </tbody>
                     </table>
                 </div>

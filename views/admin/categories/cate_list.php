@@ -30,6 +30,8 @@
                             <?php
                                 $list = new Categories();
                                 $data = $list -> getCategories();
+                                if(empty($data)){
+                                }else{
                                 foreach ($data as $key) {
 
                             ?>
@@ -51,7 +53,7 @@
                                  ?></td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa Category này. Toàn bộ sản phẩm liên quan cũng sẽ bị xóa')" href="?action=cateDel&id=<?php echo $key['category_id']; ?>"> Delete</a> | <i class="fa fa-pencil fa-fw"></i> <a href="?action=cateEdit&id=<?php echo $key['category_id']; ?>">Edit</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } }?>
                         </tbody>
                     </table>
                 </div>

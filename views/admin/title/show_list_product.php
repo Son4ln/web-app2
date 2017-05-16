@@ -27,7 +27,7 @@
                             <?php
                                 $title = new Titles();
                                 $data = $title -> showProductListByTitleId($id);
-                                if(empty($data)){}
+                                if(empty($data)){}else{
                                 foreach ($data as $key) {
 
                             ?>
@@ -46,7 +46,7 @@
                                 </td>
 
                             </tr>
-                            <?php } ?>
+                            <?php } } ?>
                         </tbody>
                     </table>
                 </div>

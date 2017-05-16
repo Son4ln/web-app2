@@ -16,6 +16,9 @@
                     <?php
                         $brand = new Brands();
                         $data = $brand -> getBrands ();
+                        if(empty($data)){
+
+                        }
                     ?>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">

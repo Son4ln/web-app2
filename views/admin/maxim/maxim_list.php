@@ -27,8 +27,10 @@
                             <?php
                                 $list = new Maxim();
                                 $data = $list -> getMaxim();
-                                foreach ($data as $key) {
+                                if(empty($data)){
 
+                                }else{
+                                foreach ($data as $key) {
                             ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['maxim_id']; ?></td>
@@ -45,7 +47,7 @@
 
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa châm ngôn này')" href="?action=delMaxim&id=<?php echo $key['maxim_id']; ?>"> Delete</a> <br/><hr style="margin: 5px" /> <i class="fa fa-pencil fa-fw"></i> <a href="?action=editMaxim&id=<?php echo $key['maxim_id']; ?>">Edit</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } }?>
                         </tbody>
                     </table>
                 </div>

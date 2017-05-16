@@ -14,6 +14,14 @@
 			return $result;
 		}
 
+		public function getBlogsByUser ($user) {
+			$db = new connect();
+			$query = "select * from blogs where user_id = '$user'";
+			$result = $db -> getList($query);
+			return $result;
+		}
+
+
 		//lấy dữ liệu thông qua id
 		public function getBlogById ($id) {
 			$db = new connect();
@@ -23,9 +31,9 @@
 		}
 
 		//thêm dữ liệu vào
-		public function addBlogs ($title, $imgs, $desc, $content){
+		public function addBlogs ($title, $imgs, $desc, $content , $datePost, $user){
 			$db = new connect();
-			$query = "insert into blogs values('','$title','$imgs','$desc', '$content')";
+			$query = "insert into blogs values('','$title','$imgs','$desc', '$content', '$datePost', '$user')";
 			$db -> exec($query);
 		}
 
@@ -65,7 +73,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//tìm kiếm blog
 		public function searchBlog ($search) {
 			$db = new connect();
@@ -73,7 +81,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//tìm kiếm product
 		public function searchProduct ($search) {
 			$db = new connect();
@@ -81,7 +89,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//tìm kiếm brand
 		public function searchBrand ($search) {
 			$db = new connect();
@@ -89,7 +97,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//tìm kiếm feature
 		public function searchFeature ($search) {
 			$db = new connect();
@@ -97,7 +105,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//tìm kiếm origin
 		public function searchOrigin ($search) {
 			$db = new connect();
@@ -105,7 +113,7 @@
 			$result = $db -> getList($query);
 			return $result;
 		}
-		
+
 		//đếm kết quả tìm kiếm blog
 		public function countSearchBlog ($search) {
 			$db = new connect();
@@ -113,7 +121,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm kết quả tìm kiếm product
 		public function countSearchProduct ($search) {
 			$db = new connect();
@@ -121,7 +129,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm kết quả tìm kiếm brand
 		public function countSearchBrand ($search) {
 			$db = new connect();
@@ -129,7 +137,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm kết quả tìm kiếm feature
 		public function countSearchFeature ($search) {
 			$db = new connect();
@@ -137,7 +145,7 @@
 			$result = $db -> getInstance($query);
 			return $result;
 		}
-		
+
 		//đếm kết quả tìm kiếm origin
 		public function countSearchOrigin ($search) {
 			$db = new connect();

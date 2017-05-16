@@ -17,6 +17,8 @@
                         $certifi = new Certificates();
                         $data = $certifi -> getCertificatesAndProducts ();
                         $product = new Products();
+                        if(empty($data)){
+                        }
                     ?>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -30,7 +32,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($data as $key) {
+
+                            <?php else{ foreach ($data as $key) {
                              ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['show_id']; ?></td>
@@ -44,7 +47,7 @@
                                 ?></td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa chứng nhận đi kèm với sản phẩm này')" href="?action=certificateAndProductDel&id=<?php echo $key['show_id']; ?>"> Delete</a> | <i class="fa fa-pencil fa-fw"></i> <a href="?action=certificateAndProductEdit&id=<?php echo $key['show_id']; ?>">Edit</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } } ?>
                             </tbody>
                         </tbody>
                     </table>
