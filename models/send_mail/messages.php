@@ -1,7 +1,7 @@
 <?php
     require_once 'Mail.php';
     require_once 'Mail/RFC822.php';
-    
+
     function send_email($fname,$address, $to, $from, $subject, $body, $is_body_html = false) {
         if (!valid_email($to)) {
             throw new Exception('This To address is invalid: ' .htmlspecialchars($to));
@@ -16,8 +16,8 @@
         $smtp['host'] = 'ssl://smtp.gmail.com';
         $smtp['port'] = 465;
         $smtp['auth'] = true;
-        $smtp['username'] = 'nganpham1129@gmail.com';
-        $smtp['password'] = 'N123456789N';
+        $smtp['username'] = '';//email here
+        $smtp['password'] = '';//pass email here
         $mailer = Mail::factory('smtp', $smtp);
         if (PEAR::isError($mailer)) {
             throw new Exception('Could not create mailer.');
@@ -25,19 +25,19 @@
        // Add the email address to the list of all recipients
         $recipients = array();
         $recipients[] = $to;
-        
+
         // Set the headers
         $headers = array();
         $headers['From'] = $from;//khai báo địa chỉ mail người gửi
         $headers['To'] = $to;//khai báo địa chỉ mail người nhận
         $headers['Subject'] = $subject; // chủ đề của mail
-        
+
         // Khai báo thông tin mail người gửi.
         if ($is_body_html) {
             // Khai báo header dùng mã utf-8 để hiển thị tiếng việt
             $headers['Content-type']  = 'text/html; charset=utf-8' . "\r\n";
         }
-        
+
         //khai báo nội dung thư theo chuẩn HTML
 	$message  = '<center><h3 style="color:#ea1a77; font-weight: bold;">CONTACT</h3></center>
                     <div style="text-indent:100px; margin-left:100px;">
@@ -47,13 +47,13 @@
                         <p><span style="color:#ea1a77;">- Message: </span>'.$body.'</p></div>';
     // Send the email
         $result = $mailer->send($recipients, $headers, $message);
-        
+
         // Check the result and throw an error if one exists
         if (PEAR::isError($result)) {
             throw new Exception('Error sending email: ' .htmlspecialchars($result->getMessage()) );
         }
     }
-	
+
 	function send_email2($fname,$address, $phone, $to, $from, $subject, $order_id, $is_body_html = false) {
         if (!valid_email($to)) {
             throw new Exception('This To address is invalid: ' .htmlspecialchars($to));
@@ -77,19 +77,19 @@
        // Add the email address to the list of all recipients
         $recipients = array();
         $recipients[] = $to;
-        
+
         // Set the headers
         $headers = array();
         $headers['From'] = $from;//khai báo địa chỉ mail người gửi
         $headers['To'] = $to;//khai báo địa chỉ mail người nhận
         $headers['Subject'] = $subject; // chủ đề của mail
-        
+
         // Khai báo thông tin mail người gửi.
         if ($is_body_html) {
             // Khai báo header dùng mã utf-8 để hiển thị tiếng việt
             $headers['Content-type']  = 'text/html; charset=utf-8' . "\r\n";
         }
-        
+
         //khai báo nội dung thư theo chuẩn HTML
 	$message  = '<center><h3 style="color:#ea1a77; font-weight: bold;">ORDER ONLINE</h3></center>
                     <div style="text-indent:100px; margin-left:100px;">
@@ -100,13 +100,13 @@
                         <p><span style="color:#ea1a77;">- Order_id: </span>'.$order_id.'</p></div>';
     // Send the email
         $result = $mailer->send($recipients, $headers, $message);
-        
+
         // Check the result and throw an error if one exists
         if (PEAR::isError($result)) {
             throw new Exception('Error sending email: ' .htmlspecialchars($result->getMessage()) );
         }
     }
-    
+
     function send_email_forgot($username, $user_email, $pw) {
         $smtp = array();
         // **** You must change the following to match your
@@ -123,16 +123,16 @@
        // Add the email address to the list of all recipients
         $recipients = array();
         $recipients[] = $user_email;
-        
+
         // Set the headers
         $headers = array();
         $headers['From'] = 'nganpham1129@gmail.com';//khai báo địa chỉ mail người gửi
         $headers['To'] = $user_email;//khai báo địa chỉ mail người nhận
         $headers['Subject'] = 'Confirm Password'; // chủ đề của mail
-        
+
         // Khai báo thông tin mail người gửi.
             $headers['Content-type']  = 'text/html; charset=utf-8' . "\r\n";
-        
+
         //khai báo nội dung thư theo chuẩn HTML
 	$message  = '<center><h3 style="color:#ea1a77;">CONFIRM PASSWORD</h3></center>
                     <div style="text-indent:100px; margin-left:100px;">
@@ -140,13 +140,13 @@
                   <p>Please login with this password and change your password.</p>';
     // Send the email
         $result = $mailer->send($recipients, $headers, $message);
-        
+
         // Check the result and throw an error if one exists
         if (PEAR::isError($result)) {
             throw new Exception('Error sending email: ' .htmlspecialchars($result->getMessage()) );
         }
     }
-    
+
     function valid_email($email) {
         $emailObjects =Mail_RFC822::parseAddressList($email);
         if (PEAR::isError($emailObjects)) return false;
