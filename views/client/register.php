@@ -29,8 +29,9 @@ if(empty($_SESSION['messages']))
 										<label>Username: (*)</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" name="username" class="form-control" id="username" placeholder="Từ 6 đến 12 ký tự" /><div id="alert-name"> </div>
+										<input type="text" name="username" class="form-control"  onblur="blurFunction_user()" id="username" placeholder="Username is between 6-20" />
 									</div>
+									<div class="col-md-12" id="alert-name"></div>
 								</div>
                             <br />
 								<div class="row">
@@ -38,8 +39,9 @@ if(empty($_SESSION['messages']))
 										<label>Password: (*)</label>
 									</div>
 									<div class="col-md-8">
-										<input name="password" type="password" class="form-control" id="password1" placeholder="từ 5 đến 12 ký tự" />
+										<input name="password" type="password" class="form-control" onblur="blurFunction_pass1()" id="password1" placeholder="Password must be >6 characters." />
 									</div>
+									<div class="col-md-12" id="alert-pass"></div>
 								</div>
                             <br />
 								<div class="row">
@@ -47,9 +49,9 @@ if(empty($_SESSION['messages']))
 										<label>Confirm: (*)</label>
 									</div>
 									<div class="col-md-8">
-										<input type="password" name="re_password" class="form-control" id="password2" placeholder="từ 5 đến 12 ký tự" />
-										<div id="alert-pass"> </div>
+										<input type="password" name="re_password" class="form-control" onblur="blurFunction_pass2()" id="password2" placeholder="" />
 									</div>
+									<div class="col-md-12" id="alert-pass2"></div>
 								</div>
                             <br />
 								<div class="row">
@@ -57,9 +59,9 @@ if(empty($_SESSION['messages']))
 										<label>Full Name: (*)</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" id="name" class="form-control" name="user_fullname" placeholder="từ 6 đến 20 ký tự" />
-										<div id="alert-fname"> </div>
+										<input type="text" id="name" class="form-control" name="user_fullname" onblur="blurFunction_name()" placeholder="Full name must be >6 characters." />
 									</div>
+									<div class="col-md-12" id="alert-fname"></div>
 								</div>
                             <br />
 								<div class="row">
@@ -67,9 +69,9 @@ if(empty($_SESSION['messages']))
 										<label>Email: (*)</label>
 									</div>
 									<div class="col-md-8">
-										<input type="email" id="email" class="form-control" name="user_email"/>
-										<div id="alert-email"> </div>
+										<input type="email" id="email" class="form-control" name="user_email" onblur="blurFunction_email()"/>
 									</div>
+									<div class="col-md-12" id="alert-email"></div>
 								</div>
                             <br />
 								<div class="row">
@@ -77,9 +79,9 @@ if(empty($_SESSION['messages']))
 										<label>Address: (*)</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" id="diachi" class="form-control" name="user_address" />
-										<div id="alert-address"> </div>
+										<input type="text" id="address" class="form-control" name="user_address" onblur="blurFunction_address()" />
 									</div>
+									<div class="col-md-12" id="alert-address"></div>
 								</div>
                             <br />
 								<div class="row">
@@ -87,9 +89,9 @@ if(empty($_SESSION['messages']))
 										<label>Phone: (*)</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" id="tel" class="form-control" name="user_phone"/>
-										<div id="alert-tel"> </div>
+										<input type="text" id="tel" class="form-control" name="user_phone" onblur="blurFunction_tel()"/>
 									</div>
+									<div class="col-md-12" id="alert-tel"></div>
 								</div>
                             <br />
                             <div style="text-align: center">
@@ -106,86 +108,175 @@ if(empty($_SESSION['messages']))
 <?php
     include '../views/client/footer.php';?>
 <script type="text/javascript">
-	function clearAlert(){
-		document.getElementById('alert-name').innerHTML = "";
-		document.getElementById('alert-pass').innerHTML = "";
-                document.getElementById('alert-fname').innerHTML = "";
-		document.getElementById('alert-email').innerHTML = "";
-                document.getElementById('alert-address').innerHTML = "";
-		document.getElementById('alert-tel').innerHTML = "";
-	}
-	function validate(){
-		clearAlert();
-		var user =document.getElementById('username').value.length;
-		if(user == 0) {
-			document.getElementById('alert-name').innerHTML = " Mời nhập tên";
-			document.getElementById('alert-name').style.color = "red";
-                        return false;
-		}
-		else if(user < 6 || user >12) {
-			document.getElementById('alert-name').innerHTML = "Tên nhập nhỏ hơn 6 hoặc dài hơn 12 ký tự";
-			document.getElementById('alert-name').style.color = "red";
-                        return false;
-		}
-		
-		var pass1 =document.getElementById('password1').value;
-		var pass2 =document.getElementById('password2').value;
-		if(pass1.length == 0 || pass2.length == 0) {
-			document.getElementById('alert-pass').innerHTML = " Xin mời nhập đầy đủ mật khẩu.";
-			document.getElementById('alert-pass').style.color = "red";
-                        return false;
-		}
-		else if(pass1 != pass2) {
-			document.getElementById('alert-pass').innerHTML = "Password nhập vào không đúng.";
-			document.getElementById('alert-pass').style.color = "red";
-                        return false;
-		}
-		else if(pass1.length < 5 || pass1.length >12 || pass2.length < 5 || pass2.length >12) {
-			document.getElementById('alert-pass').innerHTML = "Password nhập nhỏ hơn 5 hoặc dài hơn 12 ký tự";
-			document.getElementById('alert-pass').style.color = "red";
-                        return false;
-		}
-                    
-                var name =document.getElementById('name').value.length;
-                if(name  == 0) {
-			document.getElementById('alert-fname').innerHTML = " Mời nhập họ tên";
-			document.getElementById('alert-fname').style.color = "red";
-                        return false;
-		}
-		else if(name < 6 || name >20) {
-			document.getElementById('alert-fname').innerHTML = "Tên nhập nhỏ hơn 6 hoặc dài hơn 20 ký tự";
-			document.getElementById('alert-fname').style.color = "red";
-                        return false;
-		}
-                
-                var email = document.getElementById('email').value;
-                if(email.length == 0) {
-                                document.getElementById('alert-email').innerHTML = " Mời nhập email";
-                                document.getElementById('alert-email').style.color = "red";
-                                return false;
-                        }
-                        else if(email.indexOf("@")==(-1) || email.indexOf(".")==(-1)) {
-                                document.getElementById('alert-email').innerHTML = "Email nhập sai quy tắc.";
-                                document.getElementById('alert-email').style.color = "red";
-                                return false;
-                        }
-                var address =document.getElementById('diachi').value.length;
-                if(address == 0) {
-			document.getElementById('alert-address').innerHTML = " Mời nhập địa chỉ";
-			document.getElementById('alert-address').style.color = "red";
-                        return false;
-		}
-                 var tel = document.getElementById('tel').value;
-                if(tel.length == 0) {
-                                document.getElementById('alert-tel').innerHTML = " Mời nhập số điện thoại.";
-                                document.getElementById('alert-tel').style.color = "red";
-                                return false;
-                        }
-                        else if(tel.slice(0,1)!=("0") || tel.length <10 || tel.length >12 ) {
-                                document.getElementById('alert-tel').innerHTML = "Số điện thoại nhập không đúng.";
-                                document.getElementById('alert-tel').style.color = "red";
-                                return false;
-                        }
-	
-	}
+		/* Register */
+		function validate(){
+				var user =document.getElementById('username').value;
+				if(user.length == 0 || user ==" ") {
+					document.getElementById('alert-name').innerHTML = "Please enter a username.";
+					document.getElementById('alert-name').style.color = "#ea1a77";
+				}
+				else if(user.length < 6 || user.length >20) {
+					document.getElementById('alert-name').innerHTML = "Username must be >6 or <20 characters.";
+					document.getElementById('alert-name').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-name').innerHTML = "";
+				}
+				
+				var pass1 =document.getElementById('password1').value;
+				if(pass1.length == 0) {
+					document.getElementById('alert-pass').innerHTML = " Please enter a password.";
+					document.getElementById('alert-pass').style.color = "#ea1a77";
+				}
+				else if(pass1.length < 6) {
+					document.getElementById('alert-pass').innerHTML = "Password must be >6 characters.";
+					document.getElementById('alert-pass').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-pass').innerHTML = "";
+				}
+				
+				var pass2 =document.getElementById('password2').value;
+				if(pass2 != pass1) {
+					document.getElementById('alert-pass2').innerHTML = "Password entered does not match.";
+					document.getElementById('alert-pass2').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-pass2').innerHTML = "";
+				}
+				
+				var name =document.getElementById('name').value;
+				if(name.length == 0 || name ==" ") {
+					document.getElementById('alert-fname').innerHTML = "Please enter a full name.";
+					document.getElementById('alert-fname').style.color = "#ea1a77";
+				}
+				else if(name.length < 6) {
+					document.getElementById('alert-fname').innerHTML = "Full name must be >6 characters.";
+					document.getElementById('alert-fname').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-fname').innerHTML = "";
+				}
+				
+				var email = document.getElementById('email').value;
+				if(email.length == 0) {
+					document.getElementById('alert-email').innerHTML = "Please enter a email.";
+					document.getElementById('alert-email').style.color = "#ea1a77";
+				}
+				else if(email.indexOf("@")==(-1) || email.indexOf(".")==(-1)) {
+					document.getElementById('alert-email').innerHTML = "Email entered the wrong rules.";
+					document.getElementById('alert-email').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-email').innerHTML = "";
+				}
+				
+				var t =document.getElementById('address').value;
+				if(t.length < 15) {
+					document.getElementById('alert-address').innerHTML = "Please enter an address.";
+					document.getElementById('alert-address').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-address').innerHTML = "";
+				}
+				
+				var tel = document.getElementById('tel').value;
+				if(tel.length == 0) {
+                    document.getElementById('alert-tel').innerHTML = "Please enter the phone number.";
+                    document.getElementById('alert-tel').style.color = "#ea1a77";
+                }else if(tel.slice(0,1)!=("0") || tel.length <10 || tel.length >12 ) {
+                    document.getElementById('alert-tel').innerHTML = "Phone number entered incorrectly.";
+                    document.getElementById('alert-tel').style.color = "#ea1a77";
+                }else{
+					document.getElementById('alert-tel').innerHTML = "";
+				}
+				
+			}
+		/*----------*/
+			function blurFunction_user() {
+				var user =document.getElementById('username').value;
+				if(user.length == 0 || user ==" ") {
+					document.getElementById('alert-name').innerHTML = "Please enter a username";
+					document.getElementById('alert-name').style.color = "#ea1a77";
+				}
+				else if(user.length < 6 || user.length >20) {
+					document.getElementById('alert-name').innerHTML = "Username must be >6 or <20 characters";
+					document.getElementById('alert-name').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-name').innerHTML = "";
+				}
+			}
+			function blurFunction_pass1() {
+				var pass1 =document.getElementById('password1').value;
+				if(pass1.length == 0) {
+					document.getElementById('alert-pass').innerHTML = "Please enter a password.";
+					document.getElementById('alert-pass').style.color = "#ea1a77";
+				}
+				else if(pass1.length < 6) {
+					document.getElementById('alert-pass').innerHTML = "Password must be <6 characters";
+					document.getElementById('alert-pass').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-pass').innerHTML = "";
+				}
+			}
+			function blurFunction_pass2() {
+				var pass =document.getElementById('password1').value;
+				var pass1 =document.getElementById('password2').value;
+				if(pass1.length == 0) {
+					document.getElementById('alert-pass2').innerHTML = "Please enter a confirm password.";
+					document.getElementById('alert-pass2').style.color = "#ea1a77";
+				}
+				else if(pass1 != pass) {
+					document.getElementById('alert-pass2').innerHTML = "Password entered does not match.";
+					document.getElementById('alert-pass2').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-pass2').innerHTML = "";
+				}
+			}
+			
+			function blurFunction_name() {
+				var name =document.getElementById('name').value;
+				if(name.length == 0 || name ==" ") {
+					document.getElementById('alert-fname').innerHTML = "Please enter a fullname.";
+					document.getElementById('alert-fname').style.color = "#ea1a77";
+				}
+				else if(name.length < 6) {
+					document.getElementById('alert-fname').innerHTML = "Full name must be >6 characters long";
+					document.getElementById('alert-fname').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-fname').innerHTML = "";
+				}
+			}
+			
+			function blurFunction_email() {
+				var email = document.getElementById('email').value;
+				if(email.length == 0) {
+					document.getElementById('alert-email').innerHTML = "Please enter a email.";
+					document.getElementById('alert-email').style.color = "#ea1a77";
+				}
+				else if(email.indexOf("@")==(-1) || email.indexOf(".")==(-1)) {
+					document.getElementById('alert-email').innerHTML = "Email entered the wrong rules.";
+					document.getElementById('alert-email').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-email').innerHTML = "";
+				}
+			}
+			
+			function blurFunction_address() {
+				var t =document.getElementById('address').value;
+				if(t.length <15) {
+					document.getElementById('alert-address').innerHTML = "Please enter an address";
+					document.getElementById('alert-address').style.color = "#ea1a77";
+				}else{
+					document.getElementById('alert-address').innerHTML = "";
+				}
+			}
+			
+			function blurFunction_tel() {
+				var tel = document.getElementById('tel').value;
+				if(tel.length == 0) {
+                    document.getElementById('alert-tel').innerHTML = "Please enter the phone number.";
+                    document.getElementById('alert-tel').style.color = "#ea1a77";
+                }else if(tel.slice(0,1)!=("0") || tel.length <10 || tel.length >12 ) {
+                    document.getElementById('alert-tel').innerHTML = "Phone number entered incorrectly.";
+                    document.getElementById('alert-tel').style.color = "#ea1a77";
+                }else{
+					document.getElementById('alert-tel').innerHTML = "";
+				}
+			}
+		/* \\Register */	
 </script>

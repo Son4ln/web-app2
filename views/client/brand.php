@@ -11,6 +11,11 @@
             <div class="row">
                 <div class="col-md-12">
 					<?php
+						$objBrand = new Brands();
+						$countBrand = $objBrand->countBrand();
+						if($countBrand[0] == 0){
+							echo "<center><h3>Waiting for brand updates.</h3></center>";
+						}else{
 						$array = array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
 					?>
 					<ul id="brand-az">
@@ -24,10 +29,6 @@
 					<div id="brand-list">
 						<div class="brand-char-wrap">
 							<div class="brand-char" id="brand-8">Total</div>
-								<?php
-									$objBrand = new Brands();
-									$countBrand = $objBrand->countBrand();
-								?>
 								<ul>
 									<div class="col-md-4"><a href="?action=product"><?php echo $countBrand[0]; ?> Brand</a></div>
 								</ul>
@@ -56,6 +57,9 @@
 						}
 						?>
 					</div>
+					<?php
+						}
+					?>
 				</div>
 			</div>
         </div>

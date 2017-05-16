@@ -28,34 +28,34 @@ if(empty($_SESSION['messages']))
                         <form action="?action=send_mail" method="post" class="contact-form" novalidate="novalidate">
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="fname" value="" size="80%" class="form-control" placeholder="Full Name" required = "required">
+									<input type="text" name="fname" id="name" value="" size="80%" class="form-control" placeholder="Full Name" onblur="blurFunction_name()">
 								</div>
+								<div class="col-md-12" id="alert-fname"></div>
 							</div>
-							<br />
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="address" value="" size="80%" class="form-control" placeholder="Address" required>
+									<input type="text" name="address" id="address" value="" size="80%" class="form-control" placeholder="Address" onblur="blurFunction_address()">
 								</div>
+								<div class="col-md-12" id="alert-address"></div>
 							</div>
-							<br />
 							<div class="row">
 								<div class="col-md-12">
-									<input type="email" name="from" value="" size="80%" class="form-control" placeholder="Email"  required>
+									<input type="email" name="from" value="" id="email" size="80%" class="form-control" placeholder="Email" onblur="blurFunction_email()">
 								</div>
+								<div class="col-md-12" id="alert-email"></div>
 							</div>
-							<br />
 							<div class="row">
 								<div class="col-md-12">
-									<input type="text" name="subject" value="" size="80%" class="form-control" placeholder="Subject" required>
+									<input type="text" name="subject" value=""  id="title" size="80%" class="form-control" placeholder="Subject" onblur="blurFunction_title()">
 								</div>
+								<div class="col-md-12" id="alert-title"></div>
 							</div>
-							<br />
 							<div class="row">
 								<div class="col-md-12">
-									<textarea name="message" cols="80%" rows="7" class="form-control" placeholder="Message" required></textarea>
+									<textarea name="message" cols="80%" rows="7"  id="text-t" class="form-control" placeholder="Message" onblur="blurFunction_text()"></textarea>
 								</div>
+								<div class="col-md-12" id="alert-text"></div>
 							</div>
-							<br />
 							<p><input type="submit" value="Send"  class="btn btn-primary btn-login" ></p>
                         </form>
 					</div>
@@ -100,3 +100,113 @@ if(empty($_SESSION['messages']))
 </section>
 <!-- END contact -->
 <?php include '../views/client/footer.php'; ?>
+
+<script>
+/* Contact */
+	function validate(){
+		var name =document.getElementById('name').value;
+		if(name.length == 0 || name ==" ") {
+			document.getElementById('alert-fname').innerHTML = "Please enter a full name.";
+			document.getElementById('alert-fname').style.color = "#ea1a77";
+		}
+		else if(name.length < 6) {
+			document.getElementById('alert-fname').innerHTML = "Full name must be >6 characters.";
+			document.getElementById('alert-fname').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-fname').innerHTML = "";
+		}
+		
+		var t =document.getElementById('address').value;
+		if(t.length < 15) {
+			document.getElementById('alert-address').innerHTML = "Please enter an address.";
+			document.getElementById('alert-address').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-address').innerHTML = "";
+		}
+		
+		var email = document.getElementById('email').value;
+		if(email.length == 0) {
+			document.getElementById('alert-email').innerHTML = "Please enter a email.";
+			document.getElementById('alert-email').style.color = "#ea1a77";
+		}
+		else if(email.indexOf("@")==(-1) || email.indexOf(".")==(-1)) {
+			document.getElementById('alert-email').innerHTML = "Email entered the wrong rules.";
+			document.getElementById('alert-email').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-email').innerHTML = "";
+		}
+		
+		var title =document.getElementById('title').value;
+		if(title.length == 0 || title ==" ") {
+			document.getElementById('alert-title').innerHTML = "Please enter a subject.";
+			document.getElementById('alert-title').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-title').innerHTML = "";
+		}
+		
+		var t =document.getElementById('text-t').value;
+		if(t.length == 0 || t ==" ") {
+			document.getElementById('alert-text').innerHTML = "Please enter a message.";
+			document.getElementById('alert-text').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-text').innerHTML = "";
+		}
+	}
+/*-------------*/	
+	function blurFunction_name() {
+		var name =document.getElementById('name').value;
+		if(name.length == 0 || name ==" ") {
+			document.getElementById('alert-fname').innerHTML = "Please enter a full name.";
+			document.getElementById('alert-fname').style.color = "#ea1a77";
+		}
+		else if(name.length < 6) {
+			document.getElementById('alert-fname').innerHTML = "Full name must be >6 characters.";
+			document.getElementById('alert-fname').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-fname').innerHTML = "";
+		}
+	}
+	
+	function blurFunction_address() {
+		var t =document.getElementById('address').value;
+		if(t.length <15) {
+			document.getElementById('alert-address').innerHTML = "Please enter an address";
+			document.getElementById('alert-address').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-address').innerHTML = "";
+		}
+	}
+	
+	function blurFunction_email() {
+		var email = document.getElementById('email').value;
+		if(email.length == 0) {
+			document.getElementById('alert-email').innerHTML = "Please enter a email.";
+			document.getElementById('alert-email').style.color = "#ea1a77";
+		}
+		else if(email.indexOf("@")==(-1) || email.indexOf(".")==(-1)) {
+			document.getElementById('alert-email').innerHTML = "Email entered the wrong rules.";
+			document.getElementById('alert-email').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-email').innerHTML = "";
+		}
+	}
+	function blurFunction_title() {
+		var title =document.getElementById('title').value;
+		if(title.length == 0 || title ==" ") {
+			document.getElementById('alert-title').innerHTML = "Please enter a subject.";
+			document.getElementById('alert-title').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-title').innerHTML = "";
+		}
+	}
+	function blurFunction_text() {
+		var t =document.getElementById('text-t').value;
+		if(t.length == 0 || t ==" ") {
+			document.getElementById('alert-text').innerHTML = "Please enter a message.";
+			document.getElementById('alert-text').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-text').innerHTML = "";
+		}
+	}
+/* // End contact */
+</script>

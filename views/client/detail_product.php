@@ -104,7 +104,7 @@
 						foreach($showCtfc as $ctfc){
 						?>
 						<div  class="col-md-4">
-							<img src="<?php echo '../controller/public/client/images/certificate/'.$ctfc['certificate_image']; ?>" alt="<?php echo $ctfc['certificate_name']; ?>" title="<?php echo $ctfc['certificate_name']; ?>"/>
+							<img src="<?php echo '../controller/public/client/images/certificates/'.$ctfc['certificate_image']; ?>" alt="<?php echo $ctfc['certificate_name']; ?>" title="<?php echo $ctfc['certificate_name']; ?>"/>
 							<p><?php echo $ctfc['certificate_name']; ?></p>
 							<br />
 						</div>
@@ -113,26 +113,13 @@
 						?>
                     </div>
                 </div>
-				<div id="article-right">
-                    <h3 class="bottom-border" style="padding-top:50px; margin-bottom: 15px;">Certificate</h3>
-					<?php
-					$showCtfc = $objCtfc->getProductCertificate($client_id);
-					foreach($showCtfc as $ctfc){
-					?>
-					<div class="col-sm-4">
-						<img src="<?php echo '../controller/public/client/images/certificate/'.$ctfc['certificate_image']; ?>" alt="<?php echo $ctfc['certificate_name']; ?>" title="<?php echo $ctfc['certificate_name']; ?>"/>
-						<p><?php echo $ctfc['certificate_name']; ?></p>
-					</div>
-					<?php
-					}
-					?>
-				</div>
 				<?php
 					}
 				?>
             </div>
             <div class="col-sm-7 col-xs-12">
                 <div id="product-text">
+					<h2 class="bold" style="font-size: 1.6em;"><?php  echo $detailPro['product_name'] ; ?></h2>
 					<span class="currency" style="display:none">AUD</span>
                     <div class="price-div">
 						<div class="rrp">Old Price:
@@ -166,14 +153,22 @@
                         </div>
                     </div>
                    	<div id="add-to-cart-wrap">
+						<?php 
+							if($detailPro['product_in_stock'] == 0){
+								echo '<h3>Sold out</h3>';
+							}else{
+						?>
 						<form action="?action=add_cart" method="post" name="add_cart">
 							<input type="hidden" name="productkey" value="<?php echo $client_id;?>"/>
                             <fieldset id="add-to-cart">
                                 <label for="quantity">Enter Qty</label>
-                                	<input id="quantity" name="itemqty" type="number" min="1" max="<?php  echo $detailPro['product_in_stock']; ?>" width="60px">
+                                	<input id="quantity" name="itemqty" value="1" type="number" min="1" max="<?php  echo $detailPro['product_in_stock']; ?>">
 									<input type="submit" class="btn btn-primary btn-login" value="Add to Cart" >
 	                        </fieldset>
 						</form>
+						<?php
+							}
+						?>
                     </div><h2 class="bold">Product Description</h2>
                     <div class="description">
 						<p><?php echo nl2br($detailPro['product_detail'])?></p>

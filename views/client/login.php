@@ -46,8 +46,9 @@ if(isset($_SESSION['check']))
 								<label>Username: (*)</label>
 							</div>
 							<div class="col-md-8">
-								<input name="username" class="form-control" type="text" id="txtusername" value=""/>
+								<input name="username" class="form-control" type="text" id="txtusername" value="" onblur="blurFunction_user()"/>
 							</div>
+							<div class="col-md-12" id="alert-name"></div>
 						</div>
 						<br />
 						<div class="row">
@@ -55,12 +56,13 @@ if(isset($_SESSION['check']))
 								<label>Password: (*)</label>
 							</div>
 							<div class="col-md-8">
-								<input name="password" class="form-control" type="password" id="txtpasword" value=""/>
+								<input name="password" class="form-control" type="password" id="txtpassword" value="" onblur="blurFunction_pass()"/>
 							</div>
+							<div class="col-md-12" id="alert-pass"></div>
 						</div>
 						<br />
 						<div style="text-align: center">
-							<input type="submit"  class="btn btn-primary btn-login" value="Sign In"  />
+							<input type="submit"  class="btn btn-primary btn-login" value="Sign In" onclick="return validate()" />
 							<input class="btn btn-default" type="reset" value="Reset" />
 						</div>
 					</form>
@@ -79,3 +81,61 @@ if(isset($_SESSION['check']))
 </section>
 <!-- END LOGIN -->
 <?php include '../views/client/footer.php'; ?>
+<script>
+/* Login */
+function validate(){
+		var user =document.getElementById('txtusername').value;
+		if(user.length == 0 || user ==" ") {
+			document.getElementById('alert-name').innerHTML = "Please enter a username";
+			document.getElementById('alert-name').style.color = "#ea1a77";
+		}
+		else if(user.length < 6 || user.length >20) {
+			document.getElementById('alert-name').innerHTML = "Username must be >6 or <20 characters";
+			document.getElementById('alert-name').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-name').innerHTML = "";
+		}
+		
+		var pass1 =document.getElementById('txtpassword').value;
+		if(pass1.length == 0) {
+			document.getElementById('alert-pass').innerHTML = " Please enter a password.";
+			document.getElementById('alert-pass').style.color = "#ea1a77";
+		}
+		else if(pass1.length < 6) {
+			document.getElementById('alert-pass').innerHTML = "Password must be >6 characters";
+			document.getElementById('alert-pass').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-pass').innerHTML = "";
+		}
+		
+	}
+/*----------*/
+	function blurFunction_user() {
+		var user =document.getElementById('txtusername').value;
+		if(user.length == 0 || user ==" ") {
+			document.getElementById('alert-name').innerHTML = "Please enter a username";
+			document.getElementById('alert-name').style.color = "#ea1a77";
+		}
+		else if(user.length < 6 || user.length >20) {
+			document.getElementById('alert-name').innerHTML = "Username must be >6 or <20 characters";
+			document.getElementById('alert-name').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-name').innerHTML = "";
+		}
+	}
+	function blurFunction_pass() {
+		var pass1 =document.getElementById('txtpassword').value;
+		if(pass1.length == 0) {
+			document.getElementById('alert-pass').innerHTML = "Please enter a password.";
+			document.getElementById('alert-pass').style.color = "#ea1a77";
+		}
+		else if(pass1.length < 6 ) {
+			document.getElementById('alert-pass').innerHTML = "Password must be >6 characters";
+			document.getElementById('alert-pass').style.color = "#ea1a77";
+		}else{
+			document.getElementById('alert-pass').innerHTML = "";
+		}
+	}
+/* \\Login */
+
+</script>

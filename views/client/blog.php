@@ -12,7 +12,7 @@
 				$objBlog = new Blogs();
 				$countBlog = $objBlog->getCountBlogSlide();
 				if($countBlog[0] == 0){
-					echo '<center><h3>Chưa có tin tức!</h3></center>';
+					echo '<center><h3>Waiting for blogs updates!</h3></center>';
 				}
 				else{
 					if($countBlog[0]>=6){
