@@ -2,11 +2,7 @@
 	include '../views/client/header.php';
 ?>
 <?php
-if(isset($_SESSION['check']))
-    {
-       echo 'Không tìm thấy yêu cầu';
-    }
-    else  if(empty($_SESSION['messages']))
+	if(empty($_SESSION['messages']))
         {
             $messages="";
             
@@ -15,17 +11,6 @@ if(isset($_SESSION['check']))
         {
             $messages=$_SESSION['messages'];
         }
-      if ((isset($_COOKIE["user"]) && (isset($_COOKIE["pass"]))))
-      {
-          $user=$_COOKIE["user"];
-          $pass=$_COOKIE["pass"];
-      }
-      else
-      {
-          $user="";
-          $pass="";
-      }
-      
 ?> 
 <!-- SEARCH -->
 <section class="section white" style="text-align: left;">
