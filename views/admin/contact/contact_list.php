@@ -32,7 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($data as $key) {
+                            <?php else{ foreach ($data as $key) {
                              ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['contact_id']; ?></td>
@@ -42,7 +42,7 @@
                                 <td><?php echo $key['sent_date']; ?></td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa liên hệ này')" href="?action=delContactFromUser&id=<?php echo $key['contact_id']; ?>"> Delete</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } }?>
                             </tbody>
                         </tbody>
                     </table>

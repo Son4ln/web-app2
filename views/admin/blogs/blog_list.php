@@ -15,7 +15,14 @@
 
                     <?php
                         $blog = new Blogs();
-                        $data = $blog -> getBlogs ();
+                        if($_SESSION['permission04516'] == 0){
+                         $data = $blog -> getBlogs();
+                        }else{
+                          $data = $blog -> getBlogsByUser($_SESSION['userId04576']);
+                        }
+
+                        if(empty($data)){
+                        }else{
                     ?>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -43,7 +50,7 @@
                                  ?></td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa Brand này. Toàn bộ sản phẩm liên quan cũng sẽ bị xóa')" href="?action=blogDel&id=<?php echo $key['blog_id']; ?>"> Delete</a> <br/><hr style="margin: 5px" /> <i class="fa fa-pencil fa-fw"></i> <a href="?action=blogEdit&id=<?php echo $key['blog_id']; ?>">Edit and Detail</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } }?>
                             </tbody>
                         </tbody>
                     </table>

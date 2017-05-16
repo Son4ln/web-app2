@@ -31,7 +31,11 @@
                                 $order = new Order();
                                 $user = new Users();
                                 $data = $order -> getOrder();
+                                if(empty($data)){
+
+                                }else{
                                  foreach ($data as $key) {
+
                             ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['order_id']; ?></td>
@@ -54,7 +58,7 @@
                                 <i class="fa fa-table fa-fw"></i> <a href="?action=orderDetail&id=<?php echo $key['order_id']; ?>">Detail</a> |
                                 <i class="fa fa-trash-o  fa-fw" ></i><a onclick="return delConfirm ('Bạn có chắc muốn xóa hóa đơn này');" href="?action=orderDel&id=<?php echo $key['order_id']; ?>"> Delete</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } }?>
                         </tbody>
                     </table>
                 </div>

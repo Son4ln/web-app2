@@ -28,7 +28,7 @@
                                 $count = 0;
                                 $title = new Titles();
                                 $data = $title -> getTitles();
-                                if(empty($data)){}
+                                if(empty($data)){}else{
                                 foreach ($data as $key) {
 
                             ?>
@@ -64,7 +64,7 @@
                                 </td>
 
                             </tr>
-                            <?php } ?>
+                            <?php } } ?>
                         </tbody>
                     </table>
                 </div>

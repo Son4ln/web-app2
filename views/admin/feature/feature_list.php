@@ -29,14 +29,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($data as $key) {
+                            <?php else { foreach ($data as $key) {
                              ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['feature_id']; ?></td>
                                 <td><?php echo $key['feature_name']; ?></td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return delConfirm('Bạn có chắc muốn xóa feature này. Toàn bộ sản phẩm liên quan cũng sẽ bị xóa')" href="?action=delFeature&id=<?php echo $key['feature_id']; ?>"> Delete</a> | <i class="fa fa-pencil fa-fw"></i> <a href="?action=editFeature&id=<?php echo $key['feature_id']; ?>">Edit</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } }?>
                             </tbody>
                         </tbody>
                     </table>

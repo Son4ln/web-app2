@@ -30,7 +30,11 @@
                              <?php
                                 $user = new Users();
                                 $data = $user -> getUsers();
+                                if(empty($data)){
+
+                                }else{
                                  foreach ($data as $key) {
+
                             ?>
                             <tr class="odd gradeX" align="center">
                                 <td><?php echo $key['full_name']; ?></td>
@@ -51,7 +55,7 @@
                                 <td><i class="fa fa-trash-o  fa-fw" ></i><a onclick="return delConfirm ('Bạn có chắc muốn xóa User này');" href="?action=delUser&id=<?php echo $key['user_id']; ?>"> Delete</a> |
                                 <i class="fa fa-pencil fa-fw"></i> <a href="?action=userEdit&id=<?php echo $key['user_id']; ?>">Permission</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php } }?>
                         </tbody>
                     </table>
                 </div>
